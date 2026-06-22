@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TÃ©cnicos - RJvidros OS</title>
+  <title>Técnicos - RJvidros OS</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-header">
-      <h2>ðŸ”§ RJvidros v1.0</h2>
+      <h2>RJvidros v1.0</h2>
     </div>
     <nav class="sidebar-nav">
-      <a href="dashboard.html" class="nav-link">ðŸ“Š Dashboard</a>
-      <a href="clientes.html" class="nav-link">ðŸ‘¥ Clientes</a>
-      <a href="ordens.html" class="nav-link">ðŸ“‹ Ordens</a>
-      <a href="tecnicos.html" class="nav-link active">ðŸ”© TÃ©cnicos</a>
-      <a href="financeiro.html" class="nav-link">ðŸ’° Financeiro</a>
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+      <a href="clientes.html" class="nav-link">Clientes</a>
+      <a href="ordens.html" class="nav-link">Ordens</a>
+      <a href="tecnicos.html" class="nav-link active">Técnicos</a>
+      <a href="financeiro.html" class="nav-link">Financeiro</a>
     </nav>
-    <button id="sidebarLogout" class="btn btn-danger" style="width: 100%; margin-top: 40px;">ðŸšª Logout</button>
+    <button id="sidebarLogout" class="btn btn-danger" style="width: 100%; margin-top: 40px;">xa Logout</button>
   </aside>
 
   <!-- Main Content -->
@@ -30,19 +30,19 @@
         <span id="userGreeting">Bem-vindo!</span>
       </div>
       <div style="display: flex; gap: 16px; align-items: center;">
-        <button id="themeToggle" class="btn btn-secondary">ðŸŒ™</button>
-        <button id="logoutButton" class="btn btn-danger">ðŸšª Logout</button>
+        <button id="themeToggle" class="btn btn-secondary">Tema</button>
+        <button id="logoutButton" class="btn btn-danger">xa Logout</button>
       </div>
     </header>
 
     <!-- Content -->
     <main class="container">
-      <h1>Gerenciar TÃ©cnicos</h1>
+      <h1>Gerenciar Técnicos</h1>
 
       <div class="split-panel">
         <!-- Form -->
         <section class="panel">
-          <h2>Novo TÃ©cnico</h2>
+          <h2>Novo Técnico</h2>
           <form id="techForm">
             <input type="text" id="techName" placeholder="Nome" required>
             <input type="text" id="techPhone" placeholder="Telefone">
@@ -52,8 +52,8 @@
               <option value="Ativo">Ativo</option>
               <option value="Inativo">Inativo</option>
             </select>
-            <textarea id="techNotes" placeholder="ObservaÃ§Ãµes" rows="3"></textarea>
-            <button type="submit" class="btn btn-primary">âœ¨ Cadastrar TÃ©cnico</button>
+            <textarea id="techNotes" placeholder="Observações" rows="3"></textarea>
+            <button type="submit" class="btn btn-primary">S Cadastrar Técnico</button>
           </form>
           <div id="techFeedback"></div>
         </section>
@@ -61,8 +61,8 @@
         <!-- Table -->
         <section class="panel">
           <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h2>Lista de TÃ©cnicos</h2>
-            <button id="refreshTecnicos" class="btn btn-secondary">ðŸ”„ Atualizar</button>
+            <h2>Lista de Técnicos</h2>
+            <button id="refreshTecnicos" class="btn btn-secondary">Atualizar</button>
           </div>
           <div style="overflow-x: auto;">
             <table>

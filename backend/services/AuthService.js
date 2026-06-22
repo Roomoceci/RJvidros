@@ -1,4 +1,4 @@
-﻿const { createToken, hashPassword, isPasswordHash, verifyPassword } = require('../utils/security');
+const { createToken, hashPassword, isPasswordHash, verifyPassword } = require('../utils/security');
 
 class AuthService {
   constructor(db) {
@@ -10,11 +10,11 @@ class AuthService {
     const user = await this.db.getUserByEmail(normalizedEmail);
     
     if (!user) {
-      throw new Error('UsuÃ¡rio ou senha invÃ¡lidos');
+      throw new Error('Usuário ou senha inválidos');
     }
 
     if (!verifyPassword(password, user.password)) {
-      throw new Error('UsuÃ¡rio ou senha invÃ¡lidos');
+      throw new Error('Usuário ou senha inválidos');
     }
 
     if (!isPasswordHash(user.password)) {

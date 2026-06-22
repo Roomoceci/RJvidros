@@ -23,7 +23,7 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: 'Aptos', 'Segoe UI Variable', 'Segoe UI', Arial, sans-serif;
   color: var(--text-light);
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   transition: background 0.3s ease;

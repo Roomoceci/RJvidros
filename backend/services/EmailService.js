@@ -1,4 +1,4 @@
-﻿const nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 
 class EmailService {
   constructor(config = process.env) {
@@ -23,25 +23,25 @@ class EmailService {
 
   buildNfeText(order) {
     return [
-      `NFe / comprovante da Ordem de ServiÃ§o #${order.id}`,
+      `NFe / comprovante da Ordem de Serviço #${order.id}`,
       '',
       `Cliente: ${order.client || '-'}`,
-      `ServiÃ§o: ${order.title || '-'}`,
-      `DescriÃ§Ã£o: ${order.description || '-'}`,
-      `TÃ©cnico: ${order.technician || 'A definir'}`,
+      `Serviço: ${order.title || '-'}`,
+      `Descrição: ${order.description || '-'}`,
+      `Técnico: ${order.technician || 'A definir'}`,
       `Valor: R$ ${Number(order.total || 0).toFixed(2)}`,
       `Status: ${order.status}`,
       `Pagamento: ${order.paid ? 'Pago' : 'Pendente'}`,
       `Finalizada em: ${order.completed_at || new Date().toISOString()}`,
       '',
-      'Obrigado pela preferÃªncia.',
+      'Obrigado pela preferência.',
       'RJvidros OS'
     ].join('\n');
   }
 
   async sendOrderNfe(order) {
     if (!this.isConfigured()) {
-      return { sent: false, reason: 'SMTP nÃ£o configurado' };
+      return { sent: false, reason: 'SMTP não configurado' };
     }
 
     if (!order.client_email) {
@@ -54,7 +54,7 @@ class EmailService {
     await this.createTransporter().sendMail({
       from,
       to: order.client_email,
-      subject: `NFe da Ordem de ServiÃ§o #${order.id} - RJvidros`,
+      subject: `NFe da Ordem de Serviço #${order.id} - RJvidros`,
       text,
       attachments: [
         {

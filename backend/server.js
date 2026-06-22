@@ -1,4 +1,4 @@
-﻿const path = require('path');
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const { verifyToken } = require('./utils/security');
@@ -187,7 +187,7 @@ app.get('/api/dashboard', async (req, res) => {
     const metrics = await db.getDashboardMetrics();
     res.json(metrics);
   } catch (error) {
-    res.status(500).json({ error: 'NÃ£o foi possÃ­vel carregar o dashboard.' });
+    res.status(500).json({ error: 'Não foi possível carregar o dashboard.' });
   }
 });
 
@@ -198,7 +198,7 @@ app.get('/', (req, res) => {
 
 app.get('*', (req, res) => {
   if (req.path.startsWith('/api/')) {
-    return res.status(404).json({ error: 'Endpoint nÃ£o encontrado' });
+    return res.status(404).json({ error: 'Endpoint não encontrado' });
   }
 
   const filePath = path.resolve(frontendRoot, `.${req.path}`);
@@ -215,10 +215,10 @@ app.get('*', (req, res) => {
 
 const listenArgs = HOST ? [PORT, HOST] : [PORT];
 const server = app.listen(...listenArgs, () => {
-  console.log(`ðŸ”§ RJvidros OS Backend v1.0`);
-  console.log(`âœ¨ Rodando em http://${HOST || 'localhost'}:${PORT}`);
-  console.log(`ðŸ—„ï¸ Banco SQLite: ${DB_PATH}`);
-  console.log('ðŸ“Š Painel administrativo pronto');
+  console.log('RJvidros OS Backend v1.0');
+  console.log(`Rodando em http://${HOST || 'localhost'}:${PORT}`);
+  console.log(`Banco SQLite: ${DB_PATH}`);
+  console.log('Painel administrativo pronto');
 });
 
 const shutdown = async () => {

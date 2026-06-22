@@ -1,4 +1,4 @@
-﻿class OrderService {
+class OrderService {
   constructor(db, emailService = null) {
     this.db = db;
     this.emailService = emailService;
@@ -15,7 +15,7 @@
 
   async getClosedOrders() {
     const orders = await this.getAllOrders();
-    return orders.filter(order => order.status === 'ConcluÃ­da' || order.status === 'ConcluÃƒÂ­da');
+    return orders.filter(order => order.status === 'Concluída' || order.status === 'ConcluÒ­da');
   }
 
   async getOrderById(id) {

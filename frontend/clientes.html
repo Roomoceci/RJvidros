@@ -11,20 +11,20 @@
     <!-- SIDEBAR -->
     <aside class="sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-logo">ðŸ”§</div>
+        <div class="sidebar-logo">RJ</div>
         <div class="sidebar-brand">
           <h3>RJvidros</h3>
           <small>v1.0</small>
         </div>
       </div>
       <nav class="sidebar-nav">
-        <a href="dashboard.html">ðŸ“Š Dashboard</a>
-        <a href="clientes.html" class="active">ðŸ‘¥ Clientes</a>
-        <a href="ordens.html">ðŸ“‹ Ordens</a>
-        <a href="solicitacoes.html">ðŸš€ SolicitaÃ§Ãµes</a>
-        <a href="tecnicos.html">ðŸ”© TÃ©cnicos</a>
-        <a href="financeiro.html">ðŸ’° Financeiro</a>
-        <button id="sidebarLogout">ðŸšª Sair</button>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="clientes.html" class="active">Clientes</a>
+        <a href="ordens.html">Ordens</a>
+        <a href="solicitacoes.html">xa Solicitações</a>
+        <a href="tecnicos.html">Técnicos</a>
+        <a href="financeiro.html">Financeiro</a>
+        <button id="sidebarLogout">Sair</button>
       </nav>
     </aside>
 
@@ -32,11 +32,11 @@
     <div class="main-wrapper">
       <header class="topbar">
         <div>
-          <h1>GestÃ£o de Clientes</h1>
-          <p>Cadastro e histÃ³rico de atendimentos</p>
+          <h1>Gestão de Clientes</h1>
+          <p>Cadastro e histórico de atendimentos</p>
         </div>
         <div class="topbar-actions">
-          <button class="theme-toggle" id="themeToggle">ðŸŒ™</button>
+          <button class="theme-toggle" id="themeToggle">Tema</button>
           <button id="logoutButton" class="button-secondary">Sair</button>
         </div>
       </header>
@@ -48,8 +48,8 @@
             <label>Nome<input type="text" id="clientName" required /></label>
             <label>Telefone<input type="text" id="clientPhone" /></label>
             <label>E-mail<input type="email" id="clientEmail" /></label>
-            <label>EndereÃ§o<input type="text" id="clientAddress" /></label>
-            <label>ObservaÃ§Ãµes<textarea id="clientNotes"></textarea></label>
+            <label>Endereço<input type="text" id="clientAddress" /></label>
+            <label>Observações<textarea id="clientNotes"></textarea></label>
             <button type="submit" class="button-primary">Cadastrar cliente</button>
             <p id="clientFeedback" class="success-message"></p>
           </form>
@@ -57,11 +57,11 @@
           <div class="panel">
             <div class="panel-header">
               <h2>Lista de Clientes</h2>
-              <button id="refreshClients" class="button-tertiary">ðŸ”„ Atualizar</button>
+              <button id="refreshClients" class="button-tertiary">Atualizar</button>
             </div>
             <div class="table-container">
               <table>
-                <thead><tr><th>Nome</th><th>Telefone</th><th>E-mail</th><th>EndereÃ§o</th></tr></thead>
+                <thead><tr><th>Nome</th><th>Telefone</th><th>E-mail</th><th>Endereço</th></tr></thead>
                 <tbody id="clientsTable"></tbody>
               </table>
             </div>

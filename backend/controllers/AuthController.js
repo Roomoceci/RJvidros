@@ -1,4 +1,4 @@
-﻿class AuthController {
+class AuthController {
   constructor(authService) {
     this.authService = authService;
   }
@@ -8,7 +8,7 @@
       const { email, password } = req.body;
 
       if (!email || !password) {
-        return res.status(400).json({ error: 'Email e senha sÃ£o obrigatÃ³rios' });
+        return res.status(400).json({ error: 'Email e senha são obrigatórios' });
       }
 
       const result = await this.authService.authenticate(email, password);

@@ -1,4 +1,4 @@
-﻿const Client = require('../models/Client');
+const Client = require('../models/Client');
 
 class ClientService {
   constructor(db) {
@@ -24,10 +24,10 @@ class ClientService {
 
   validateClientData(data) {
     if (!data.name || !data.name.trim()) {
-      throw new Error('Nome do cliente Ã© obrigatÃ³rio');
+      throw new Error('Nome do cliente é obrigatório');
     }
     if (data.email && !this.isValidEmail(data.email)) {
-      throw new Error('Email invÃ¡lido');
+      throw new Error('Email inválido');
     }
   }
 

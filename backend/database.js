@@ -1,4 +1,4 @@
-﻿const sqlite3 = require('sqlite3').verbose();
+const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const fs = require('fs');
 const { hashPassword } = require('./utils/security');
@@ -120,7 +120,7 @@ class DatabaseManager {
         }
 
         this.db.run('INSERT INTO clients (name, phone, email, address, notes) VALUES (?, ?, ?, ?, ?)',
-          ['Cliente Demo', '11999999999', 'cliente@example.com', 'Rua Exemplo, 123', 'Cliente padrÃ£o']);
+          ['Cliente Demo', '11999999999', 'cliente@example.com', 'Rua Exemplo, 123', 'Cliente padrão']);
         this.db.run('INSERT INTO technicians (name, phone, email, specialty, status) VALUES (?, ?, ?, ?, ?)',
           ['Tecnico Demo', '11988888888', 'tecnico@example.com', 'Vidracaria geral', 'Ativo']);
       }
@@ -209,7 +209,7 @@ class DatabaseManager {
     const completedAt = new Date().toISOString();
     await this.run(`UPDATE orders
       SET status = ?, paid = 1, completed_at = ?, nfe_email_status = ?
-      WHERE id = ?`, ['ConcluÃ­da', completedAt, emailStatus, id]);
+      WHERE id = ?`, ['Concluída', completedAt, emailStatus, id]);
     return this.getOrderById(id);
   }
 
@@ -226,7 +226,7 @@ class DatabaseManager {
 
   async getDashboardMetrics() {
     const openOrders = await this.queryGet('SELECT COUNT(*) AS count FROM orders WHERE status = "Aberta"');
-    const closedOrders = await this.queryGet('SELECT COUNT(*) AS count FROM orders WHERE status = "ConcluÃ­da"');
+    const closedOrders = await this.queryGet('SELECT COUNT(*) AS count FROM orders WHERE status = "Concluída"');
     const revenue = await this.queryGet('SELECT IFNULL(SUM(total), 0) AS total FROM orders WHERE paid = 1');
     const activeClients = await this.queryGet('SELECT COUNT(*) AS count FROM clients');
 

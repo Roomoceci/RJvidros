@@ -1,4 +1,4 @@
-﻿const Technician = require('../models/Technician');
+const Technician = require('../models/Technician');
 
 class TechnicianService {
   constructor(db) {
@@ -30,13 +30,13 @@ class TechnicianService {
 
   validateTechnicianData(data) {
     if (!data.name || !data.name.trim()) {
-      throw new Error('Nome do tÃ©cnico Ã© obrigatÃ³rio');
+      throw new Error('Nome do técnico é obrigatório');
     }
     if (!data.email || !this.isValidEmail(data.email)) {
-      throw new Error('Email vÃ¡lido Ã© obrigatÃ³rio');
+      throw new Error('Email válido é obrigatório');
     }
     if (data.status && !['Ativo', 'Inativo'].includes(data.status)) {
-      throw new Error('Status invÃ¡lido');
+      throw new Error('Status inválido');
     }
   }
 

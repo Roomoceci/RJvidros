@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SolicitaÃ§Ãµes | RJvidros OS</title>
+  <title>Solicitações | RJvidros OS</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -11,20 +11,20 @@
     <!-- SIDEBAR -->
     <aside class="sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-logo">ðŸ”§</div>
+        <div class="sidebar-logo">RJ</div>
         <div class="sidebar-brand">
           <h3>RJvidros</h3>
           <small>v1.0</small>
         </div>
       </div>
       <nav class="sidebar-nav">
-        <a href="dashboard.html">ðŸ“Š Dashboard</a>
-        <a href="clientes.html">ðŸ‘¥ Clientes</a>
-        <a href="ordens.html">ðŸ“‹ Ordens</a>
-        <a href="solicitacoes.html" class="active">ðŸš€ SolicitaÃ§Ãµes</a>
-        <a href="tecnicos.html">ðŸ”© TÃ©cnicos</a>
-        <a href="financeiro.html">ðŸ’° Financeiro</a>
-        <button id="sidebarLogout">ðŸšª Sair</button>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="clientes.html">Clientes</a>
+        <a href="ordens.html">Ordens</a>
+        <a href="solicitacoes.html" class="active">xa Solicitações</a>
+        <a href="tecnicos.html">Técnicos</a>
+        <a href="financeiro.html">Financeiro</a>
+        <button id="sidebarLogout">Sair</button>
       </nav>
     </aside>
 
@@ -32,12 +32,12 @@
     <div class="main-wrapper">
       <header class="topbar">
         <div>
-          <h1>Gerenciar SolicitaÃ§Ãµes de ServiÃ§o</h1>
+          <h1>Gerenciar Solicitações de Serviço</h1>
           <p id="userGreeting">Bem-vindo!</p>
         </div>
         <div class="topbar-actions">
-          <button class="theme-toggle" id="themeToggle">ðŸŒ™</button>
-          <button id="printButton" class="button-secondary" title="Imprimir SolicitaÃ§Ãµes">ðŸ–¨ï¸ Imprimir</button>
+          <button class="theme-toggle" id="themeToggle">Tema</button>
+          <button id="printButton" class="button-secondary" title="Imprimir Solicitações">Imprimir</button>
           <button id="logoutButton" class="button-secondary">Sair</button>
         </div>
       </header>
@@ -46,22 +46,22 @@
         <!-- Stats Cards -->
         <section class="grid-cards">
           <div class="card">
-            <div class="card-icon primary">ðŸš€</div>
-            <span>SolicitaÃ§Ãµes Pendentes</span>
+            <div class="card-icon primary">OS</div>
+            <span>Solicitações Pendentes</span>
             <strong id="pendingCount">0</strong>
           </div>
           <div class="card">
-            <div class="card-icon success">âœ“</div>
-            <span>SolicitaÃ§Ãµes Aprovadas</span>
+            <div class="card-icon success">OK</div>
+            <span>Solicitações Aprovadas</span>
             <strong id="approvedCount">0</strong>
           </div>
           <div class="card">
-            <div class="card-icon warning">ðŸ“…</div>
+            <div class="card-icon warning">R$</div>
             <span>Agendadas</span>
             <strong id="scheduledCount">0</strong>
           </div>
           <div class="card">
-            <div class="card-icon primary">ðŸ“</div>
+            <div class="card-icon primary">OS</div>
             <span>Total Recebido</span>
             <strong id="totalCount">0</strong>
           </div>
@@ -70,17 +70,17 @@
         <!-- Filters & Actions -->
         <section class="panel">
           <div class="panel-header">
-            <h2>ðŸ“‹ Todas as SolicitaÃ§Ãµes</h2>
+            <h2>Todas as Solicitações</h2>
             <div style="display: flex; gap: 10px;">
               <select id="filterStatus" style="padding: 10px 15px; border: 2px solid #e0e0e0; border-radius: 8px;">
                 <option value="">Todos os Status</option>
                 <option value="Pendente">Pendente</option>
                 <option value="Aprovada">Aprovada</option>
                 <option value="Agendada">Agendada</option>
-                <option value="ConcluÃ­da">ConcluÃ­da</option>
+                <option value="Concluída">Concluída</option>
                 <option value="Cancelada">Cancelada</option>
               </select>
-              <button id="refreshRequests" class="button-tertiary">ðŸ”„ Atualizar</button>
+              <button id="refreshRequests" class="button-tertiary">Atualizar</button>
             </div>
           </div>
 
@@ -91,10 +91,10 @@
                   <th>ID</th>
                   <th>Cliente</th>
                   <th>Telefone</th>
-                  <th>ServiÃ§o</th>
+                  <th>Serviço</th>
                   <th>Status</th>
                   <th>Data Solicitada</th>
-                  <th>AÃ§Ãµes</th>
+                  <th>Ações</th>
                 </tr>
               </thead>
               <tbody id="requestsTable">
@@ -106,11 +106,11 @@
     </div>
   </div>
 
-  <!-- MODAL - Detalhes da SolicitaÃ§Ã£o -->
+  <!-- MODAL - Detalhes da Solicitação -->
   <div id="requestModal" class="modal" style="display: none;">
     <div class="modal-content">
       <div class="modal-header">
-        <h2>ðŸ“ Detalhes da SolicitaÃ§Ã£o</h2>
+        <h2>Detalhes da Solicitação</h2>
         <button class="btn-close" onclick="closeRequestModal()">&times;</button>
       </div>
       <div class="modal-body">
@@ -128,7 +128,7 @@
             <p id="modalClientEmail"></p>
           </div>
           <div>
-            <strong>Tipo de ServiÃ§o</strong>
+            <strong>Tipo de Serviço</strong>
             <p id="modalServiceType"></p>
           </div>
           <div>
@@ -136,23 +136,23 @@
             <p id="modalPreferredDate"></p>
           </div>
           <div>
-            <strong>Data da SolicitaÃ§Ã£o</strong>
+            <strong>Data da Solicitação</strong>
             <p id="modalCreatedAt"></p>
           </div>
         </div>
 
         <div style="margin-bottom: 20px;">
-          <strong>EndereÃ§o</strong>
+          <strong>Endereço</strong>
           <p id="modalAddress"></p>
         </div>
 
         <div style="margin-bottom: 20px;">
-          <strong>DescriÃ§Ã£o do Problema</strong>
+          <strong>Descrição do Problema</strong>
           <p id="modalDescription"></p>
         </div>
 
         <div style="margin-bottom: 20px;">
-          <strong>ObservaÃ§Ãµes</strong>
+          <strong>Observações</strong>
           <p id="modalNotes"></p>
         </div>
 
@@ -182,10 +182,10 @@
           <option value="Pendente">Pendente</option>
           <option value="Aprovada">Aprovada</option>
           <option value="Agendada">Agendada</option>
-          <option value="ConcluÃ­da">ConcluÃ­da</option>
+          <option value="Concluída">Concluída</option>
           <option value="Cancelada">Cancelada</option>
         </select>
-        <button id="updateStatusBtn" class="button-primary" onclick="updateRequestStatus()">ðŸ’¾ Atualizar Status</button>
+        <button id="updateStatusBtn" class="button-primary" onclick="updateRequestStatus()">Atualizar Status</button>
         <button id="convertToOrderBtn" class="button-secondary" onclick="convertRequestToOrder()">Gerar OS</button>
         <button class="button-secondary" onclick="closeRequestModal()">Fechar</button>
       </div>

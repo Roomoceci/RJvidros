@@ -1,4 +1,4 @@
-﻿const ServiceRequest = require('../models/ServiceRequest');
+const ServiceRequest = require('../models/ServiceRequest');
 
 class ServiceRequestService {
   constructor(db) {
@@ -44,7 +44,7 @@ class ServiceRequestService {
   }
 
   async updateRequestStatus(id, status) {
-    if (!['Pendente', 'Aprovada', 'Agendada', 'Concluida', 'ConcluÃ­da', 'Cancelada'].includes(status)) {
+    if (!['Pendente', 'Aprovada', 'Agendada', 'Concluida', 'Concluída', 'Cancelada'].includes(status)) {
       throw new Error('Status invalido');
     }
 
@@ -62,7 +62,7 @@ class ServiceRequestService {
       throw new Error('Solicitacao cancelada nao pode virar OS');
     }
 
-    if (['Agendada', 'Concluida', 'ConcluÃ­da'].includes(request.status)) {
+    if (['Agendada', 'Concluida', 'Concluída'].includes(request.status)) {
       throw new Error('Esta solicitacao ja foi encaminhada ou concluida');
     }
 

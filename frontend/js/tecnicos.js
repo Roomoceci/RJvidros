@@ -34,7 +34,7 @@ const loadTechnicians = async () => {
       </tr>
     `).join('');
   } catch (error) {
-    toastManager.error('Erro ao carregar tÃ©cnicos');
+    toastManager.error('Erro ao carregar técnicos');
   }
 };
 
@@ -54,7 +54,7 @@ techForm.addEventListener('submit', async (event) => {
 
   try {
     await apiService.createTechnician(technician);
-    toastManager.success('TÃ©cnico cadastrado com sucesso!');
+    toastManager.success('Técnico cadastrado com sucesso!');
     techForm.reset();
     await loadTechnicians();
   } catch (error) {
@@ -65,7 +65,7 @@ techForm.addEventListener('submit', async (event) => {
 // Event listeners
 document.getElementById('refreshTecnicos').addEventListener('click', async () => {
   await loadTechnicians();
-  toastManager.success('TÃ©cnicos atualizado!');
+  toastManager.success('Técnicos atualizado!');
 });
 
 // Load on page load

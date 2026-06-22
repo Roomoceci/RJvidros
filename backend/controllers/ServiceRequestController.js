@@ -1,4 +1,4 @@
-﻿class ServiceRequestController {
+class ServiceRequestController {
   constructor(serviceRequestService) {
     this.serviceRequestService = serviceRequestService;
   }
@@ -25,7 +25,7 @@
     try {
       const request = await this.serviceRequestService.getRequestById(req.params.id);
       if (!request) {
-        return res.status(404).json({ error: 'RequisiÃ§Ã£o nÃ£o encontrada' });
+        return res.status(404).json({ error: 'Requisição não encontrada' });
       }
       res.json(request);
     } catch (error) {

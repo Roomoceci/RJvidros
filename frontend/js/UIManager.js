@@ -33,7 +33,7 @@
     const userGreeting = document.getElementById('userGreeting');
     if (userGreeting) {
       const user = this.authManager.getUser();
-      userGreeting.textContent = `Bem-vindo, ${user.name || 'UsuÃ¡rio'}! ðŸ‘‹`;
+      userGreeting.textContent = `Bem-vindo, ${user.name || 'Usuário'}!`;
     }
   }
 
@@ -69,6 +69,6 @@
   }
 
   showSuccess(message) {
-    console.log('âœ…', message);
+    console.log('S&', message);
   }
 }
