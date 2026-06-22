@@ -106,7 +106,7 @@ function renderTechnicianReport(rows) {
   const table = document.getElementById('technicianReportTable');
 
   if (!rows.length) {
-    table.innerHTML = emptyRow(4, 'Nenhum tecnico encontrado.');
+    table.innerHTML = emptyRow(4, 'Nenhum técnico encontrado.');
     return;
   }
 

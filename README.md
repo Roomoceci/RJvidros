@@ -1,6 +1,6 @@
-# RJvidros OS v1.0
+﻿# RJvidros OS v1.0
 
-Aplicacao web MVC para gestao de ordens de servico de vidracaria. O sistema replica a base do Molatec OS e foi adaptado para RJvidros, com pagina publica responsiva, formulario de solicitacao, painel administrativo, clientes, tecnicos, ordens, solicitacoes, financeiro e relatorios.
+Aplicacao web MVC para gestao de ordens de serviço de vidracaria. O sistema replica a base do Molatec OS e foi adaptado para RJvidros, com pagina publica responsiva, formulario de solicitação, painel administrativo, clientes, técnicos, ordens, solicitacoes, financeiro e relatórios.
 
 ## Stack
 
@@ -13,14 +13,14 @@ Aplicacao web MVC para gestao de ordens de servico de vidracaria. O sistema repl
 ## Funcionalidades
 
 - Home publica com galeria de vidracaria
-- Formulario publico com validacao, honeypot e rate limit
+- Formulário público com validação, honeypot e rate limit
 - Login administrativo com token assinado e senha com hash PBKDF2
-- Cadastro de clientes e tecnicos
-- Criacao e acompanhamento de ordens de servico
-- Conversao de solicitacoes em OS
-- Controle financeiro e relatorios
+- Cadastro de clientes e técnicos
+- Criacao e acompanhamento de ordens de serviço
+- Conversão de solicitações em OS
+- Controle financeiro e relatórios
 - Envio opcional de comprovante/NFe por SMTP
-- Headers de seguranca, CORS configuravel e segredo obrigatorio em producao
+- Headers de seguranca, CORS configuravel e segredo obrigatório em producao
 
 ## Rodar localmente
 
@@ -37,7 +37,7 @@ http://localhost:3000
 
 ## Variaveis de ambiente
 
-Copie `.env.example` como referencia e configure no Render:
+Copie `.env.example` como referência e configure no Render:
 
 ```text
 NODE_ENV=production
@@ -64,12 +64,14 @@ npm start
 
 ## Imagens
 
-As imagens da home estao em `frontend/assets/home`. Quando as fotos reais do cliente estiverem disponiveis, substitua mantendo os nomes:
+As imagens da home estão em `frontend/assets/home`. Quando as fotos reais do cliente estiverem disponíveis, substitua mantendo os nomes:
 
-- `hero-vidros.png`
+- `hero-mola-manutencao.png`
 - `mola-piso-vidro.png`
-- `box-banheiro.png`
-- `guarda-corpo.png`
+- `mola-piso-close.png`
+- `tecnico-regulagem-mola.png`
+
+A logo vetorial está em `frontend/assets/logo-rjvidros.svg`.
 
 ## Primeiro acesso
 

@@ -1,7 +1,7 @@
-﻿{
+{
   "name": "rjvidros",
   "version": "1.0.0",
-  "description": "RJvidros OS - Gestao inteligente de ordens de servico para vidracaria",
+  "description": "RJvidros OS - Gestão inteligente de ordens de serviço para vidraçaria",
   "main": "backend/server.js",
   "engines": {
     "node": "22.x"
@@ -19,7 +19,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "nodemailer": "^9.0.0",
+    "nodemailer": "^9.0.1",
     "sqlite3": "^6.0.1"
   }
 }

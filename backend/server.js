@@ -76,7 +76,7 @@ const requireAuth = (req, res, next) => {
 
   const user = verifyToken(token);
   if (!user) {
-    return res.status(401).json({ error: 'Sessao invalida ou expirada' });
+    return res.status(401).json({ error: 'Sessão inválida ou expirada' });
   }
 
   req.user = user;

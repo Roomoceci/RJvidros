@@ -65,7 +65,7 @@ techForm.addEventListener('submit', async (event) => {
 // Event listeners
 document.getElementById('refreshTecnicos').addEventListener('click', async () => {
   await loadTechnicians();
-  toastManager.success('Técnicos atualizado!');
+  toastManager.success('Técnicos atualizados!');
 });
 
 // Load on page load

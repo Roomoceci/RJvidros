@@ -56,12 +56,12 @@ async function loadRequests() {
     const response = await fetch('/api/solicitacoes', {
       headers: authHeaders()
     });
-    if (!response.ok) throw new Error('Erro ao carregar solicitacoes');
+    if (!response.ok) throw new Error('Erro ao carregar solicitações');
     allRequests = await response.json();
     renderRequests(allRequests);
     updateStats();
   } catch (error) {
-    toastManager.error('Erro ao carregar solicitacoes');
+    toastManager.error('Erro ao carregar solicitações');
   }
 }
 
@@ -72,7 +72,7 @@ async function loadActiveTechnicians() {
   } catch (error) {
     activeTechnicians = [];
     renderTechnicianOptions();
-    toastManager.error('Erro ao carregar tecnicos ativos');
+    toastManager.error('Erro ao carregar técnicos ativos');
   }
 }
 
@@ -110,7 +110,7 @@ async function openRequestModal(requestId) {
     currentRequestId = request.id;
     statusSelect.value = request.status;
 
-    const cannotConvert = ['cancelada', 'agendada', 'concluida'].includes(statusClass(request.status));
+    const cannotConvert = ['cancelada', 'agendada', 'concluída'].includes(statusClass(request.status));
     convertToOrderBtn.disabled = cannotConvert;
     orderTechnicianSelect.value = '';
     orderTechnicianSelect.disabled = cannotConvert;
@@ -121,11 +121,11 @@ async function openRequestModal(requestId) {
     document.getElementById('modalClientPhone').textContent = request.client_phone;
     document.getElementById('modalClientEmail').textContent = request.client_email;
     document.getElementById('modalServiceType').textContent = request.service_type;
-    document.getElementById('modalPreferredDate').textContent = request.preferred_date ? new Date(request.preferred_date).toLocaleDateString('pt-BR') : 'Nao especificada';
+    document.getElementById('modalPreferredDate').textContent = request.preferred_date ? new Date(request.preferred_date).toLocaleDateString('pt-BR') : 'Não especificada';
     document.getElementById('modalCreatedAt').textContent = new Date(request.created_at).toLocaleDateString('pt-BR');
     document.getElementById('modalAddress').textContent = request.address;
     document.getElementById('modalDescription').textContent = request.description;
-    document.getElementById('modalNotes').textContent = request.notes || 'Nenhuma observacao';
+    document.getElementById('modalNotes').textContent = request.notes || 'Nenhuma observação';
     document.getElementById('modalStatus').textContent = request.status;
 
     requestModal.style.display = 'flex';
@@ -164,7 +164,7 @@ async function convertRequestToOrder() {
 
   const total = Number(orderTotalInput.value || 0);
   if (Number.isNaN(total) || total < 0) {
-    toastManager.error('Informe um valor valido para a OS');
+    toastManager.error('Informe um valor válido para a OS');
     orderTotalInput.focus();
     return;
   }
@@ -172,8 +172,8 @@ async function convertRequestToOrder() {
   const selectedTechnician = activeTechnicians.find(tech => String(tech.id) === orderTechnicianSelect.value);
   const technicianLabel = selectedTechnician ? selectedTechnician.name : 'A definir';
   const confirmMessage = [
-    'Gerar uma Ordem de Servico a partir desta solicitacao?',
-    `Tecnico: ${technicianLabel}`,
+    'Gerar uma Ordem de Serviço a partir desta solicitação?',
+    `Técnico: ${technicianLabel}`,
     `Valor: ${currencyFormatter.format(total)}`
   ].join('\n');
 
@@ -221,7 +221,7 @@ filterStatus.addEventListener('change', filterByStatus);
 
 refreshRequests.addEventListener('click', async () => {
   await loadRequests();
-  toastManager.success('Solicitacoes atualizadas!');
+  toastManager.success('Solicitações atualizadas!');
 });
 
 document.getElementById('printButton').addEventListener('click', () => {
@@ -231,7 +231,7 @@ document.getElementById('printButton').addEventListener('click', () => {
     <!DOCTYPE html>
     <html lang="pt-BR">
     <head>
-      <title>Solicitacoes de Servico</title>
+      <title>Solicitações de Serviço</title>
       <style>
         body { font-family: Arial, sans-serif; margin: 20px; color: #222; }
         h1 { text-align: center; }
@@ -242,7 +242,7 @@ document.getElementById('printButton').addEventListener('click', () => {
       </style>
     </head>
     <body>
-      <h1>Relatorio de Solicitacoes</h1>
+      <h1>Relatório de Solicitações</h1>
       ${table.outerHTML}
       <div class="print-date">Gerado em: ${new Date().toLocaleString('pt-BR')}</div>
     </body>

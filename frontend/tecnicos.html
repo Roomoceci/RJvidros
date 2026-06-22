@@ -1,94 +1,91 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Técnicos - RJvidros OS</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Técnicos | RJvidros OS</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-header">
-      <h2>RJvidros v1.0</h2>
-    </div>
-    <nav class="sidebar-nav">
-      <a href="dashboard.html" class="nav-link">Dashboard</a>
-      <a href="clientes.html" class="nav-link">Clientes</a>
-      <a href="ordens.html" class="nav-link">Ordens</a>
-      <a href="tecnicos.html" class="nav-link active">Técnicos</a>
-      <a href="financeiro.html" class="nav-link">Financeiro</a>
-    </nav>
-    <button id="sidebarLogout" class="btn btn-danger" style="width: 100%; margin-top: 40px;">xa Logout</button>
-  </aside>
-
-  <!-- Main Content -->
-  <div class="main-wrapper">
-    <!-- Topbar -->
-    <header class="topbar">
-      <div>
-        <span id="userGreeting">Bem-vindo!</span>
+  <div class="dashboard-page">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">RJ</div>
+        <div class="sidebar-brand">
+          <h3>RJvidros</h3>
+          <small>v1.0</small>
+        </div>
       </div>
-      <div style="display: flex; gap: 16px; align-items: center;">
-        <button id="themeToggle" class="btn btn-secondary">Tema</button>
-        <button id="logoutButton" class="btn btn-danger">xa Logout</button>
-      </div>
-    </header>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="clientes.html">Clientes</a>
+        <a href="ordens.html">Ordens</a>
+        <a href="solicitacoes.html">Solicitações</a>
+        <a href="tecnicos.html" class="active">Técnicos</a>
+        <a href="financeiro.html">Financeiro</a>
+        <button id="sidebarLogout">Sair</button>
+      </nav>
+    </aside>
 
-    <!-- Content -->
-    <main class="container">
-      <h1>Gerenciar Técnicos</h1>
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div>
+          <h1>Gerenciar Técnicos</h1>
+          <p id="userGreeting">Bem-vindo!</p>
+        </div>
+        <div class="topbar-actions">
+          <button class="theme-toggle" id="themeToggle">Tema</button>
+          <button id="logoutButton" class="button-secondary">Sair</button>
+        </div>
+      </header>
 
-      <div class="split-panel">
-        <!-- Form -->
-        <section class="panel">
-          <h2>Novo Técnico</h2>
-          <form id="techForm">
-            <input type="text" id="techName" placeholder="Nome" required>
-            <input type="text" id="techPhone" placeholder="Telefone">
-            <input type="email" id="techEmail" placeholder="Email" required>
-            <input type="text" id="techSpecialty" placeholder="Especialidade (ex: box, portas, espelhos)">
-            <select id="techStatus">
-              <option value="Ativo">Ativo</option>
-              <option value="Inativo">Inativo</option>
-            </select>
-            <textarea id="techNotes" placeholder="Observações" rows="3"></textarea>
-            <button type="submit" class="btn btn-primary">S Cadastrar Técnico</button>
+      <main class="container">
+        <section class="split-panel">
+          <form id="techForm" class="panel form-card">
+            <h2>Novo Técnico</h2>
+            <label>Nome<input type="text" id="techName" required /></label>
+            <label>Telefone<input type="text" id="techPhone" /></label>
+            <label>E-mail<input type="email" id="techEmail" required /></label>
+            <label>Especialidade<input type="text" id="techSpecialty" placeholder="Ex.: box, portas, espelhos" /></label>
+            <label>Status
+              <select id="techStatus">
+                <option value="Ativo">Ativo</option>
+                <option value="Inativo">Inativo</option>
+              </select>
+            </label>
+            <label>Observações<textarea id="techNotes"></textarea></label>
+            <button type="submit" class="button-primary">Cadastrar técnico</button>
+            <p id="techFeedback" class="success-message"></p>
           </form>
-          <div id="techFeedback"></div>
-        </section>
 
-        <!-- Table -->
-        <section class="panel">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h2>Lista de Técnicos</h2>
-            <button id="refreshTecnicos" class="btn btn-secondary">Atualizar</button>
-          </div>
-          <div style="overflow-x: auto;">
-            <table>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Nome</th>
-                  <th>Telefone</th>
-                  <th>Email</th>
-                  <th>Especialidade</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody id="techTable">
-              </tbody>
-            </table>
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Lista de Técnicos</h2>
+              <button id="refreshTecnicos" class="button-tertiary">Atualizar</button>
+            </div>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>E-mail</th>
+                    <th>Especialidade</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="techTable"></tbody>
+              </table>
+            </div>
           </div>
         </section>
-      </div>
-
-      <!-- Toast Notification -->
-      <div id="toast" class="toast"></div>
-    </main>
+      </main>
+    </div>
   </div>
 
-  <!-- Scripts -->
+  <div id="toast" class="toast" style="display: none;"></div>
+
   <script src="js/ApiService.js"></script>
   <script src="js/AuthManager.js"></script>
   <script src="js/ToastManager.js"></script>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solicitar Servico | RJvidros OS</title>
+  <title>Solicitar Serviço | RJvidros OS</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
     .public-page {
@@ -427,18 +427,18 @@
     <main class="request-shell">
       <aside class="request-aside">
         <section class="request-hero">
-          <img src="assets/home/hero-vidros.png" alt="Tecnico ajustando porta de vidro">
+          <img src="assets/home/hero-mola-manutencao.png" alt="Técnico ajustando mola de piso de porta de vidro">
           <div class="request-hero-content">
-            <span class="eyebrow">Solicitacao rapida</span>
+            <span class="eyebrow">Solicitação rápida</span>
             <h1>Agende seu atendimento</h1>
-            <p>Informe os dados do servico de vidracaria e nossa equipe organiza o atendimento para instalacao, reparo, manutencao ou orcamento.</p>
+            <p>Informe os dados da porta de vidro e nossa equipe organiza o atendimento para regulagem, reparo ou troca da mola de piso.</p>
 
             <div class="trust-list">
               <div class="trust-item">
                 <div class="trust-icon">OS</div>
                 <div>
                   <strong>Pedido registrado</strong>
-                  <span>A solicitacao entra no painel operacional.</span>
+                  <span>A solicitação entra no painel operacional.</span>
                 </div>
               </div>
               <div class="trust-item">
@@ -452,7 +452,7 @@
                 <div class="trust-icon">WA</div>
                 <div>
                   <strong>Contato por WhatsApp</strong>
-                  <span>Comunicacao direta com cliente e tecnico.</span>
+                  <span>Comunicação direta com cliente e técnico.</span>
                 </div>
               </div>
             </div>
@@ -463,14 +463,14 @@
       <section class="form-section">
         <div class="form-header">
           <div>
-            <h2>Solicitar servico</h2>
-            <p>Preencha com calma. Campos com asterisco sao obrigatorios.</p>
+            <h2>Solicitar serviço</h2>
+            <p>Preencha com calma. Campos com asterisco são obrigatórios.</p>
           </div>
-          <span class="secure-badge">Formulario protegido</span>
+          <span class="secure-badge">Formulário protegido</span>
         </div>
 
         <div class="info-message">
-          Responderemos sua solicitacao o quanto antes. Dados enviados sao usados apenas para organizar o atendimento.
+          Responderemos sua solicitação o quanto antes. Dados enviados são usados apenas para organizar o atendimento.
         </div>
 
         <div id="errorList" class="error-list">
@@ -478,7 +478,7 @@
         </div>
 
         <div id="successMessage" class="success-message">
-          Solicitacao enviada com sucesso. Entraremos em contato em breve.
+          Solicitação enviada com sucesso. Entraremos em contato em breve.
         </div>
 
         <form id="serviceForm" novalidate>
@@ -499,7 +499,7 @@
 
             <div class="form-row">
               <div class="form-group">
-                <label for="clientEmail" class="required">Email</label>
+                <label for="clientEmail" class="required">E-mail</label>
                 <input type="email" id="clientEmail" name="clientEmail" autocomplete="email" maxlength="160" required>
               </div>
               <div class="form-group">
@@ -510,26 +510,26 @@
           </div>
 
           <div class="form-block">
-            <h3>Dados do servico</h3>
+            <h3>Dados do serviço</h3>
             <div class="form-row">
               <div class="form-group">
-                <label for="serviceType" class="required">Tipo de servico</label>
+                <label for="serviceType" class="required">Tipo de serviço</label>
                 <select id="serviceType" name="serviceType" required>
-                  <option value="">Selecione o tipo de servico</option>
+                  <option value="">Selecione o tipo de serviço</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="address" class="required">Endereco para atendimento</label>
-                <input type="text" id="address" name="address" autocomplete="street-address" placeholder="Rua, numero, bairro e cidade" minlength="8" maxlength="240" required>
+                <label for="address" class="required">Endereço para atendimento</label>
+                <input type="text" id="address" name="address" autocomplete="street-address" placeholder="Rua, número, bairro e cidade" minlength="8" maxlength="240" required>
               </div>
             </div>
 
             <div class="form-row full">
               <div class="form-group">
                 <label for="description" class="required">Descreva o problema</label>
-                <textarea id="description" name="description" minlength="10" maxlength="1200" placeholder="Ex.: box sob medida, vidro trincado, porta nao fecha, espelho para parede, guarda-corpo para sacada..." required></textarea>
+                <textarea id="description" name="description" minlength="10" maxlength="1200" placeholder="Ex.: porta batendo forte, mola vazando óleo, porta não fecha, precisa regular ou trocar a mola de piso..." required></textarea>
                 <div class="field-hint">
-                  <span>Quanto mais claro, melhor o diagnostico inicial.</span>
+                  <span>Quanto mais claro, melhor o diagnóstico inicial.</span>
                   <span id="descriptionCounter">0/1200</span>
                 </div>
               </div>
@@ -537,8 +537,8 @@
 
             <div class="form-row full">
               <div class="form-group">
-                <label for="notes">Observacoes adicionais</label>
-                <textarea id="notes" name="notes" maxlength="800" placeholder="Horario de funcionamento, ponto de referencia, urgencia ou detalhes do acesso." style="min-height: 88px;"></textarea>
+                <label for="notes">Observações adicionais</label>
+                <textarea id="notes" name="notes" maxlength="800" placeholder="Horário de funcionamento, ponto de referência, urgência ou detalhes do acesso." style="min-height: 88px;"></textarea>
                 <div class="field-hint">
                   <span>Opcional.</span>
                   <span id="notesCounter">0/800</span>
@@ -548,9 +548,9 @@
           </div>
 
           <div class="form-actions">
-            <button type="submit" class="btn-submit">Enviar solicitacao</button>
+            <button type="submit" class="btn-submit">Enviar solicitação</button>
             <a href="#" id="whatsappPublicLink" class="btn-whatsapp" target="_blank" rel="noopener">Falar no WhatsApp</a>
-            <button type="reset" class="btn-reset">Limpar formulario</button>
+            <button type="reset" class="btn-reset">Limpar formulário</button>
             <a href="index.html" class="btn-back">Voltar</a>
           </div>
         </form>
@@ -558,8 +558,8 @@
     </main>
 
     <footer class="public-footer">
-      <p>2026 RJvidros OS - Gestao inteligente de ordens de servico</p>
-      <p>Box, portas de vidro, guarda-corpo, espelhos, sacadas e manutencao.</p>
+      <p>2026 RJvidros OS - Gestão inteligente de ordens de serviço</p>
+      <p>Portas de vidro, molas hidráulicas, pivôs, regulagem e manutenção.</p>
     </footer>
   </div>
 

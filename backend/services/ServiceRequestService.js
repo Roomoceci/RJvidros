@@ -1,4 +1,4 @@
-const ServiceRequest = require('../models/ServiceRequest');
+﻿const ServiceRequest = require('../models/ServiceRequest');
 
 class ServiceRequestService {
   constructor(db) {
@@ -45,7 +45,7 @@ class ServiceRequestService {
 
   async updateRequestStatus(id, status) {
     if (!['Pendente', 'Aprovada', 'Agendada', 'Concluida', 'Concluída', 'Cancelada'].includes(status)) {
-      throw new Error('Status invalido');
+      throw new Error('Status inválido');
     }
 
     await this.db.run('UPDATE service_requests SET status = ? WHERE id = ?', [status, id]);
@@ -55,26 +55,26 @@ class ServiceRequestService {
   async convertRequestToOrder(id, data = {}) {
     const request = await this.getRequestById(id);
     if (!request) {
-      throw new Error('Solicitacao nao encontrada');
+      throw new Error('Solicitação não encontrada');
     }
 
     if (request.status === 'Cancelada') {
-      throw new Error('Solicitacao cancelada nao pode virar OS');
+      throw new Error('Solicitação cancelada não pode virar OS');
     }
 
     if (['Agendada', 'Concluida', 'Concluída'].includes(request.status)) {
-      throw new Error('Esta solicitacao ja foi encaminhada ou concluida');
+      throw new Error('Esta solicitação já foi encaminhada ou concluída');
     }
 
     const total = Number(data.total || 0);
     if (Number.isNaN(total) || total < 0) {
-      throw new Error('Valor da OS invalido');
+      throw new Error('Valor da OS inválido');
     }
 
     const hasTechnician = data.technician_id !== undefined && data.technician_id !== null && data.technician_id !== '';
     const technicianId = hasTechnician ? Number(data.technician_id) : null;
     if (hasTechnician && (!Number.isInteger(technicianId) || technicianId <= 0)) {
-      throw new Error('Tecnico invalido ou inativo');
+      throw new Error('Técnico inválido ou inativo');
     }
 
     if (technicianId) {
@@ -83,7 +83,7 @@ class ServiceRequestService {
         [technicianId, 'Ativo']
       );
       if (!technician) {
-        throw new Error('Tecnico invalido ou inativo');
+        throw new Error('Técnico inválido ou inativo');
       }
     }
 
@@ -96,7 +96,7 @@ class ServiceRequestService {
         phone: request.clientPhone,
         email: request.clientEmail,
         address: request.address,
-        notes: `Criado a partir da solicitacao #${request.id}`
+        notes: `Criado a partir da solicitação #${request.id}`
       });
     }
 
@@ -104,10 +104,10 @@ class ServiceRequestService {
     const orderDescription = [
       request.description,
       '',
-      `Endereco: ${request.address}`,
+      `Endereço: ${request.address}`,
       request.preferred_date ? `Data preferida: ${request.preferred_date}` : null,
-      request.notes ? `Observacoes: ${request.notes}` : null,
-      `Origem: solicitacao #${request.id}`
+      request.notes ? `Observações: ${request.notes}` : null,
+      `Origem: solicitação #${request.id}`
     ].filter(Boolean).join('\n');
 
     const orderId = await this.db.createOrder({
@@ -132,7 +132,7 @@ class ServiceRequestService {
 
   validateRequestData(data) {
     if (data.request_check || data.company || data.website || data._gotcha) {
-      throw new Error('Solicitacao invalida');
+      throw new Error('Solicitação inválida');
     }
 
     const name = data.clientName || data.client_name;
@@ -145,31 +145,31 @@ class ServiceRequestService {
     const notes = data.notes;
 
     if (!name || !name.trim()) {
-      throw new Error('Nome do cliente e obrigatorio');
+      throw new Error('Nome do cliente é obrigatório');
     }
     if (name.trim().length < 3 || name.trim().length > 120) {
       throw new Error('Nome deve ter entre 3 e 120 caracteres');
     }
     if (!phone || !this.isValidPhone(phone)) {
-      throw new Error('Telefone valido e obrigatorio');
+      throw new Error('Telefone válido e obrigatório');
     }
     if (!email || !this.isValidEmail(email)) {
-      throw new Error('Email valido e obrigatorio');
+      throw new Error('Email válido e obrigatório');
     }
     if (!serviceType || !this.getServiceTypes().includes(serviceType)) {
-      throw new Error('Tipo de servico e obrigatorio');
+      throw new Error('Tipo de serviço é obrigatório');
     }
     if (!description || description.trim().length < 10 || description.trim().length > 1200) {
-      throw new Error('Descricao deve ter entre 10 e 1200 caracteres');
+      throw new Error('Descrição deve ter entre 10 e 1200 caracteres');
     }
     if (!address || address.trim().length < 8 || address.trim().length > 240) {
-      throw new Error('Endereco deve ter entre 8 e 240 caracteres');
+      throw new Error('Endereço deve ter entre 8 e 240 caracteres');
     }
     if (preferredDate && this.isPastDate(preferredDate)) {
-      throw new Error('Data preferida nao pode estar no passado');
+      throw new Error('Data preferida não pode estar no passado');
     }
     if (notes && String(notes).length > 800) {
-      throw new Error('Observacoes devem ter no maximo 800 caracteres');
+      throw new Error('Observações devem ter no máximo 800 caracteres');
     }
   }
 
@@ -213,15 +213,13 @@ class ServiceRequestService {
 
   getServiceTypes() {
     return [
-      'Box de Banheiro',
-      'Porta de Vidro',
-      'Guarda-corpo',
-      'Espelho sob medida',
-      'Fechamento de Sacada',
-      'Manutencao de Mola Hidraulica',
-      'Troca de Vidro',
-      'Instalacao Comercial',
-      'Reparo ou Regulagem',
+      'Manutenção de Mola Hidráulica',
+      'Regulagem de Mola de Piso',
+      'Troca de Mola de Piso',
+      'Reparo de Porta de Vidro',
+      'Troca de Pivô ou Ferragem',
+      'Instalação de Mola Hidráulica',
+      'Inspeção Técnica',
       'Outro'
     ];
   }

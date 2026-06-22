@@ -8,7 +8,7 @@
       const summary = await this.reportService.getFinanceSummary();
       res.json(summary);
     } catch (error) {
-      res.status(500).json({ error: 'Nao foi possivel carregar o resumo financeiro.' });
+      res.status(500).json({ error: 'Não foi possivel carregar o resumo financeiro.' });
     }
   }
 
@@ -17,7 +17,7 @@
       const report = await this.reportService.getFinanceReport();
       res.json(report);
     } catch (error) {
-      res.status(500).json({ error: 'Nao foi possivel carregar o relatorio financeiro.' });
+      res.status(500).json({ error: 'Não foi possivel carregar o relatório financeiro.' });
     }
   }
 
@@ -26,7 +26,7 @@
       const report = await this.reportService.getClientReport();
       res.json(report);
     } catch (error) {
-      res.status(500).json({ error: 'Nao foi possivel carregar o relatorio de clientes.' });
+      res.status(500).json({ error: 'Não foi possivel carregar o relatório de clientes.' });
     }
   }
 
@@ -35,7 +35,7 @@
       const report = await this.reportService.getTechnicianReport();
       res.json(report);
     } catch (error) {
-      res.status(500).json({ error: 'Nao foi possivel carregar o relatorio de tecnicos.' });
+      res.status(500).json({ error: 'Não foi possivel carregar o relatório de técnicos.' });
     }
   }
 }

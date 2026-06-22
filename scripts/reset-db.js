@@ -11,10 +11,10 @@ if (!confirmed) {
 }
 
 if (!fs.existsSync(resolvedPath)) {
-  console.log(`Banco nao encontrado em: ${resolvedPath}`);
+  console.log(`Banco não encontrado em: ${resolvedPath}`);
   process.exit(0);
 }
 
 fs.unlinkSync(resolvedPath);
 console.log(`Banco removido: ${resolvedPath}`);
-console.log('Reinicie o servico para recriar o banco com ADMIN_EMAIL e ADMIN_PASSWORD.');
+console.log('Reinicie o serviço para recriar o banco com ADMIN_EMAIL e ADMIN_PASSWORD.');

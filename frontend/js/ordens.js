@@ -47,15 +47,15 @@ function sanitizePhone(phone) {
 function buildCentralWhatsAppUrl(order) {
   const centralNumber = sanitizePhone(publicConfig.whatsappCentralNumber);
   const message = [
-    `Ola, ${publicConfig.whatsappCentralName}.`,
+    `Olá, ${publicConfig.whatsappCentralName}.`,
     `Preciso iniciar o atendimento inteligente da OS #${order.id}.`,
     `Cliente: ${order.client || '-'}`,
     `Telefone do cliente: ${order.client_phone || '-'}`,
-    `Servico: ${order.title || '-'}`,
+    `Serviço: ${order.title || '-'}`,
     `Status: ${order.status || '-'}`,
-    `Tecnico atual: ${order.technician || 'A definir'}`,
+    `Técnico atual: ${order.technician || 'A definir'}`,
     '',
-    'Por favor, confirme os dados com o cliente e repasse para um tecnico disponivel.'
+    'Por favor, confirme os dados com o cliente e repasse para um técnico disponível.'
   ].join('\n');
 
   return `https://wa.me/${centralNumber}?text=${encodeURIComponent(message)}`;
@@ -64,14 +64,14 @@ function buildCentralWhatsAppUrl(order) {
 function buildClientWhatsAppUrl(order) {
   const clientPhone = sanitizePhone(order.client_phone);
   const message = [
-    `Ola, ${order.client || 'cliente'}.`,
-    `Segue a Ordem de Servico #${order.id} da RJvidros OS.`,
-    `Servico: ${order.title || '-'}`,
+    `Olá, ${order.client || 'cliente'}.`,
+    `Segue a Ordem de Serviço #${order.id} da RJvidros OS.`,
+    `Serviço: ${order.title || '-'}`,
     `Status: ${order.status || '-'}`,
-    `Tecnico: ${order.technician || 'A definir'}`,
+    `Técnico: ${order.technician || 'A definir'}`,
     `Valor: ${currencyFormatter.format(order.total || 0)}`,
     '',
-    'Qualquer duvida, estamos a disposicao.'
+    'Qualquer dúvida, estamos à disposição.'
   ].join('\n');
 
   return `https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`;
@@ -121,12 +121,12 @@ async function loadPublicConfig() {
   try {
     publicConfig = await apiService.getPublicConfig();
   } catch (error) {
-    toastManager.error('Configuracao do WhatsApp nao carregada');
+    toastManager.error('Configuração do WhatsApp não carregada');
   }
 }
 
 async function finalizeOrderAsPaid(orderId) {
-  if (!confirm('Finalizar esta OS como concluida e paga? A NFe sera enviada para o e-mail do cliente se o SMTP estiver configurado.')) {
+  if (!confirm('Finalizar esta OS como concluída e paga? A NFe será enviada para o e-mail do cliente se o SMTP estiver configurado.')) {
     return;
   }
 
@@ -154,10 +154,10 @@ async function loadClients() {
 async function loadTechnicians() {
   try {
     const technicians = await apiService.getTechnicians();
-    orderTechnician.innerHTML = '<option value="">Selecionar tecnico</option>' +
+    orderTechnician.innerHTML = '<option value="">Selecionar técnico</option>' +
       technicians.map(tech => `<option value="${tech.id}">${escapeHtml(tech.name)}</option>`).join('');
   } catch (error) {
-    toastManager.error('Erro ao carregar tecnicos');
+    toastManager.error('Erro ao carregar técnicos');
   }
 }
 
@@ -172,7 +172,7 @@ function printFilterLabel(filter) {
   const labels = {
     todos: 'Todos os status',
     Aberta: 'Ordens abertas',
-    Concluida: 'Ordens concluidas',
+    Concluida: 'Ordens concluídas',
     pago: 'Ordens pagas',
     pendente: 'Ordens com pagamento pendente'
   };
@@ -212,7 +212,7 @@ function printOrdersReport() {
 
   const printWindow = window.open('', '_blank');
   if (!printWindow) {
-    toastManager.error('Permita pop-ups para imprimir o relatorio');
+    toastManager.error('Permita pop-ups para imprimir o relatório');
     return;
   }
 
@@ -221,7 +221,7 @@ function printOrdersReport() {
     <html lang="pt-BR">
     <head>
       <meta charset="UTF-8">
-      <title>Relatorio de Ordens de Servico</title>
+      <title>Relatório de Ordens de Serviço</title>
       <style>
         @page { size: A4 landscape; margin: 12mm; }
         * { box-sizing: border-box; }
@@ -245,7 +245,7 @@ function printOrdersReport() {
     <body>
       <header>
         <div>
-          <h1>RJvidros OS - Relatorio de Ordens de Servico</h1>
+          <h1>RJvidros OS - Relatório de Ordens de Serviço</h1>
           <div class="muted">Gerado em ${new Date().toLocaleString('pt-BR')}</div>
         </div>
         <span class="badge">${printFilterLabel(filter)}</span>
@@ -264,8 +264,8 @@ function printOrdersReport() {
             <th>OS</th>
             <th>Cliente</th>
             <th>Telefone</th>
-            <th>Tecnico</th>
-            <th>Servico</th>
+            <th>Técnico</th>
+            <th>Serviço</th>
             <th>Status</th>
             <th>Pagamento</th>
             <th>Valor</th>
@@ -274,7 +274,7 @@ function printOrdersReport() {
         <tbody>${buildOrdersReportRows(selectedOrders)}</tbody>
       </table>
 
-      <footer>RJvidros OS - Gestao inteligente de manutencao em portas de vidro</footer>
+      <footer>RJvidros OS - Gestão inteligente de manutenção em portas de vidro</footer>
     </body>
     </html>
   `;

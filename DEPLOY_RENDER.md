@@ -41,14 +41,14 @@ WHATSAPP_CENTRAL_NUMBER=55DDDNUMERO
 WHATSAPP_CENTRAL_NAME=Central RJvidros
 ```
 
-`AUTH_TOKEN_SECRET` e obrigatorio em producao para proteger as sessoes.
+`AUTH_TOKEN_SECRET` é obrigatório em produção para proteger as sessões.
 
 ## 4. Depois do deploy
 
 1. Abra `/health` e confirme `status: ok`.
 2. Acesse `/login.html`.
 3. Entre com `ADMIN_EMAIL` e `ADMIN_PASSWORD`.
-4. Cadastre tecnicos e comece a receber solicitacoes pelo formulario publico.
+4. Cadastre técnicos e comece a receber solicitações pelo formulário público.
 
 ## 5. Atualizar admin
 

@@ -1,4 +1,4 @@
-class OrderService {
+﻿class OrderService {
   constructor(db, emailService = null) {
     this.db = db;
     this.emailService = emailService;
@@ -21,7 +21,7 @@ class OrderService {
   async getOrderById(id) {
     const order = await this.db.getOrderById(id);
     if (!order) {
-      throw new Error('Ordem de servico nao encontrada');
+      throw new Error('Ordem de serviço não encontrada');
     }
 
     return order;
@@ -46,13 +46,13 @@ class OrderService {
   async finalizeAsPaid(id) {
     const order = await this.db.getOrderById(id);
     if (!order) {
-      throw new Error('Ordem de servico nao encontrada');
+      throw new Error('Ordem de serviço não encontrada');
     }
 
     const updatedOrder = await this.db.finalizeOrderAsPaid(id, 'Pendente de envio');
 
     if (!this.emailService) {
-      return this.db.markOrderNfeEmailPending(id, 'servico de e-mail indisponivel');
+      return this.db.markOrderNfeEmailPending(id, 'serviço de e-mail indisponível');
     }
 
     try {
@@ -69,13 +69,13 @@ class OrderService {
 
   validateOrderData(data) {
     if (!data.client_id) {
-      throw new Error('Cliente e obrigatorio');
+      throw new Error('Cliente e obrigatório');
     }
     if (!data.title || !data.title.trim()) {
-      throw new Error('Titulo da ordem e obrigatorio');
+      throw new Error('Titulo da ordem e obrigatório');
     }
     if (data.total && Number.isNaN(parseFloat(data.total))) {
-      throw new Error('Valor deve ser um numero valido');
+      throw new Error('Valor deve ser um numero válido');
     }
   }
 }

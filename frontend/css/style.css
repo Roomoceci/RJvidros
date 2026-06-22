@@ -79,7 +79,7 @@ button { cursor: pointer; transition: all 0.2s ease; }
 .brand-logo {
   width: 72px;
   height: 72px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  background: #f8fafc;
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -89,6 +89,12 @@ button { cursor: pointer; transition: all 0.2s ease; }
   color: white;
   font-size: 28px;
   box-shadow: var(--shadow-lg);
+}
+
+.brand-logo img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .brand h1 {
@@ -268,7 +274,7 @@ textarea { min-height: 100px; resize: vertical; }
 .sidebar-logo {
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  background: #f8fafc;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -276,6 +282,12 @@ textarea { min-height: 100px; resize: vertical; }
   color: white;
   font-weight: bold;
   font-size: 20px;
+}
+
+.sidebar-logo img {
+  width: 44px;
+  height: auto;
+  display: block;
 }
 
 .sidebar-brand h3 { margin: 0; font-size: 1rem; }

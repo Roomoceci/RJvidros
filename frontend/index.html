@@ -29,12 +29,16 @@
 
     .home-nav-logo {
       color: #14213d;
-      font-size: 1.35rem;
-      font-weight: 800;
       display: flex;
       align-items: center;
       gap: 10px;
       white-space: nowrap;
+    }
+
+    .home-nav-logo img {
+      width: 168px;
+      height: auto;
+      display: block;
     }
 
     .home-nav-links {
@@ -462,7 +466,7 @@
   <div class="home-page">
     <nav class="home-nav">
       <div class="home-nav-logo">
-        RJvidros OS
+        <img src="assets/logo-rjvidros.svg" alt="RJvidros">
       </div>
       <div class="home-nav-links">
         <a href="#features">Recursos</a>
@@ -478,18 +482,18 @@
 
     <section class="home-hero">
       <div class="home-hero-content">
-        <span class="eyebrow">Vidros sob medida para obras, lojas e residências</span>
+        <span class="eyebrow">Especialistas em molas de piso para portas de vidro</span>
         <h1>RJvidros OS</h1>
-        <p>Atendimento para box, portas de vidro, guarda-corpo, espelhos, fechamentos e manutenção de ferragens com registro de OS e contato rápido pelo WhatsApp.</p>
+        <p>Manutenção, regulagem e troca de molas hidráulicas para portas de vidro, com atendimento organizado, registro de OS e retorno rápido pelo WhatsApp.</p>
 
         <div class="hero-stats">
           <div class="hero-stat">
-            <strong>Box</strong>
-            <span>banheiro sob medida</span>
+            <strong>Molas</strong>
+            <span>regulagem e troca</span>
           </div>
           <div class="hero-stat">
-            <strong>Vidros</strong>
-            <span>residencial e comercial</span>
+            <strong>Portas</strong>
+            <span>vidro temperado</span>
           </div>
           <div class="hero-stat">
             <strong>WhatsApp</strong>
@@ -505,16 +509,16 @@
 
       <div class="hero-photos" aria-label="Fotos de serviços técnicos">
         <figure class="photo-tile large">
-          <img src="assets/home/hero-vidros.png" alt="Técnico ajustando porta de vidro comercial">
-          <figcaption class="photo-caption">Portas e fachadas de vidro</figcaption>
+          <img src="assets/home/hero-mola-manutencao.png" alt="Técnico ajustando mola de piso em porta de vidro">
+          <figcaption class="photo-caption">Manutenção de mola de piso</figcaption>
         </figure>
         <figure class="photo-tile">
-          <img src="assets/home/box-banheiro.png" alt="Box de banheiro em vidro temperado">
-          <figcaption class="photo-caption">Box sob medida</figcaption>
+          <img src="assets/home/mola-piso-close.png" alt="Mola de piso e pivô inferior de porta de vidro">
+          <figcaption class="photo-caption">Ferragens e pivôs</figcaption>
         </figure>
         <figure class="photo-tile">
-          <img src="assets/home/guarda-corpo.png" alt="Guarda-corpo de vidro em sacada">
-          <figcaption class="photo-caption">Guarda-corpo e sacadas</figcaption>
+          <img src="assets/home/tecnico-regulagem-mola.png" alt="Técnico regulando mola hidráulica de porta de vidro">
+          <figcaption class="photo-caption">Regulagem técnica</figcaption>
         </figure>
       </div>
     </section>
@@ -550,7 +554,7 @@
     <div class="gallery-header">
       <div>
         <h2>Serviços em destaque</h2>
-        <p>Fotos do segmento de vidraçaria: vidro temperado, ferragens, box, guarda-corpo, portas e acabamento limpo para cada ambiente.</p>
+        <p>Fotos do segmento de manutenção de molas: mola de piso, pivô inferior, regulagem de fechamento, troca de peças e acabamento limpo da porta.</p>
       </div>
       <a href="solicitar-servico.html" class="cta-btn cta-btn-primary">Pedir Orçamento</a>
       <a href="#" class="cta-btn cta-btn-whatsapp" data-whatsapp-link>WhatsApp</a>
@@ -558,20 +562,20 @@
 
     <div class="gallery-grid">
       <figure class="gallery-item wide">
-        <img src="assets/home/hero-vidros.png" alt="Técnico ajustando porta de vidro" loading="lazy">
-        <figcaption class="gallery-label">Porta de vidro</figcaption>
+        <img src="assets/home/hero-mola-manutencao.png" alt="Técnico ajustando mola de piso em porta de vidro" loading="lazy">
+        <figcaption class="gallery-label">Regulagem da mola</figcaption>
       </figure>
       <figure class="gallery-item">
-        <img src="assets/home/mola-piso-vidro.png" alt="Ferragem e mola de piso em porta de vidro" loading="lazy">
-        <figcaption class="gallery-label">Ferragens</figcaption>
+        <img src="assets/home/mola-piso-close.png" alt="Close-up de mola de piso e pivô inferior" loading="lazy">
+        <figcaption class="gallery-label">Mola de piso</figcaption>
       </figure>
       <figure class="gallery-item">
-        <img src="assets/home/box-banheiro.png" alt="Box de banheiro em vidro temperado" loading="lazy">
-        <figcaption class="gallery-label">Box temperado</figcaption>
+        <img src="assets/home/tecnico-regulagem-mola.png" alt="Técnico fazendo manutenção em mola hidráulica" loading="lazy">
+        <figcaption class="gallery-label">Manutenção</figcaption>
       </figure>
       <figure class="gallery-item wide">
-        <img src="assets/home/guarda-corpo.png" alt="Guarda-corpo de vidro em sacada" loading="lazy">
-        <figcaption class="gallery-label">Guarda-corpo</figcaption>
+        <img src="assets/home/mola-piso-vidro.png" alt="Ferragem inferior de porta de vidro com mola de piso" loading="lazy">
+        <figcaption class="gallery-label">Pivô inferior</figcaption>
       </figure>
     </div>
   </section>
@@ -585,7 +589,7 @@
       const number = sanitizePhone(config.whatsappCentralNumber || '5511999999999');
       const message = [
         'Olá, gostaria de solicitar atendimento da RJvidros.',
-        'Preciso de atendimento para vidros, box, porta, guarda-corpo ou espelho.'
+        'Preciso de manutenção, regulagem ou troca de mola de piso para porta de vidro.'
       ].join('\n');
 
       return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;

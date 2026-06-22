@@ -55,7 +55,7 @@ clientForm.addEventListener('submit', async (event) => {
 // Event listeners
 document.getElementById('refreshClients').addEventListener('click', async () => {
   await loadClients();
-  toastManager.success('Clientes atualizado!');
+  toastManager.success('Clientes atualizados!');
 });
 
 // Load on page load

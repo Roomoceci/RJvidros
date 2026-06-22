@@ -122,7 +122,7 @@ class DatabaseManager {
         this.db.run('INSERT INTO clients (name, phone, email, address, notes) VALUES (?, ?, ?, ?, ?)',
           ['Cliente Demo', '11999999999', 'cliente@example.com', 'Rua Exemplo, 123', 'Cliente padrão']);
         this.db.run('INSERT INTO technicians (name, phone, email, specialty, status) VALUES (?, ?, ?, ?, ?)',
-          ['Tecnico Demo', '11988888888', 'tecnico@example.com', 'Vidracaria geral', 'Ativo']);
+          ['Técnico Demo', '11988888888', 'tecnico@example.com', 'Vidraçaria geral', 'Ativo']);
       }
     });
   }

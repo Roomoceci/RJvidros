@@ -39,8 +39,8 @@ function sanitizePhone(phone) {
 function buildWhatsAppUrl(config) {
   const number = sanitizePhone(config.whatsappCentralNumber || '5511999999999');
   const message = [
-    'Ola, gostaria de solicitar atendimento da RJvidros.',
-    'Preciso de atendimento para vidros, box, porta, guarda-corpo ou espelho.'
+    'Olá, gostaria de solicitar atendimento da RJvidros.',
+    'Preciso de manutenção, regulagem ou troca de mola de piso para porta de vidro.'
   ].join('\n');
 
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
@@ -60,34 +60,32 @@ if (requestCheck) requestCheck.value = '';
 
 async function loadServiceTypes() {
   const fallbackTypes = [
-    'Box de Banheiro',
-    'Porta de Vidro',
-    'Guarda-corpo',
-    'Espelho sob medida',
-    'Fechamento de Sacada',
-    'Manutencao de Mola Hidraulica',
-    'Troca de Vidro',
-    'Instalacao Comercial',
-    'Reparo ou Regulagem',
+    'Manutenção de Mola Hidráulica',
+    'Regulagem de Mola de Piso',
+    'Troca de Mola de Piso',
+    'Reparo de Porta de Vidro',
+    'Troca de Pivô ou Ferragem',
+    'Instalação de Mola Hidráulica',
+    'Inspeção Técnica',
     'Outro'
   ];
 
   try {
     const response = await fetch('/api/solicitacoes/tipos');
     if (!response.ok) {
-      throw new Error('Erro ao carregar tipos de servico');
+      throw new Error('Erro ao carregar tipos de serviço');
     }
 
     const types = await response.json();
     renderServiceTypes(Array.isArray(types) && types.length ? types : fallbackTypes);
   } catch (error) {
     renderServiceTypes(fallbackTypes);
-    toastManager.error('Tipos de servico carregados em modo local');
+    toastManager.error('Tipos de serviço carregados em modo local');
   }
 }
 
 function renderServiceTypes(types) {
-  serviceTypeSelect.innerHTML = '<option value="">Selecione o tipo de servico</option>' +
+  serviceTypeSelect.innerHTML = '<option value="">Selecione o tipo de serviço</option>' +
     types.map(type => `<option value="${escapeHtml(type)}">${escapeHtml(type)}</option>`).join('');
 }
 
@@ -146,14 +144,14 @@ function validateForm() {
   const preferredDateValue = preferredDate.value;
   const requestCheckValue = requestCheck ? requestCheck.value.trim() : '';
 
-  if (requestCheckValue) errors.push('Solicitacao invalida');
+  if (requestCheckValue) errors.push('Solicitação inválida');
   if (clientName.length < 3) errors.push('Informe o nome completo');
-  if (!isValidPhone(clientPhone)) errors.push('Informe um telefone valido com DDD');
-  if (!isValidEmail(clientEmail)) errors.push('Informe um email valido');
-  if (!serviceType) errors.push('Selecione o tipo de servico');
-  if (address.length < 8) errors.push('Informe o endereco completo para atendimento');
+  if (!isValidPhone(clientPhone)) errors.push('Informe um telefone válido com DDD');
+  if (!isValidEmail(clientEmail)) errors.push('Informe um e-mail válido');
+  if (!serviceType) errors.push('Selecione o tipo de serviço');
+  if (address.length < 8) errors.push('Informe o endereço completo para atendimento');
   if (descriptionValue.length < 10) errors.push('Descreva o problema com pelo menos 10 caracteres');
-  if (preferredDateValue && preferredDateValue < todayIsoDate()) errors.push('A data preferida nao pode estar no passado');
+  if (preferredDateValue && preferredDateValue < todayIsoDate()) errors.push('A data preferida não pode estar no passado');
 
   return errors;
 }
@@ -170,7 +168,7 @@ function isValidPhone(phone) {
 function setSubmitting(isSubmitting) {
   const submitButton = serviceForm.querySelector('button[type="submit"]');
   submitButton.disabled = isSubmitting;
-  submitButton.textContent = isSubmitting ? 'Enviando...' : 'Enviar solicitacao';
+  submitButton.textContent = isSubmitting ? 'Enviando...' : 'Enviar solicitação';
 }
 
 serviceForm.addEventListener('reset', () => {
@@ -216,13 +214,13 @@ serviceForm.addEventListener('submit', async (event) => {
 
     const data = await response.json();
     if (!response.ok) {
-      throw new Error(data.error || 'Erro ao enviar solicitacao');
+      throw new Error(data.error || 'Erro ao enviar solicitação');
     }
 
     successMessage.classList.add('show');
     serviceForm.reset();
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    toastManager.success('Solicitacao enviada com sucesso');
+    toastManager.success('Solicitação enviada com sucesso');
   } catch (error) {
     showErrors([error.message]);
   } finally {
