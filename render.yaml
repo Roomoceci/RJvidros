@@ -1,0 +1,48 @@
+﻿services:
+  - type: web
+    name: rjvidros
+    runtime: node
+    plan: starter
+    buildCommand: npm install --build-from-source=sqlite3
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    disk:
+      name: rjvidros-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 22.16.0
+      - key: HOST
+        value: 0.0.0.0
+      - key: DB_PATH
+        value: /var/data/rjvidros.db
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: ADMIN_NAME
+        value: Administrador
+      - key: AUTH_TOKEN_SECRET
+        sync: false
+      - key: SEED_DEMO_DATA
+        value: false
+      - key: WHATSAPP_CENTRAL_NUMBER
+        sync: false
+      - key: WHATSAPP_CENTRAL_NAME
+        value: Central RJvidros
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: 587
+      - key: SMTP_SECURE
+        value: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: SMTP_FROM
+        sync: false

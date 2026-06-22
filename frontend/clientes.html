@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clientes | RJvidros OS</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="dashboard-page">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">ðŸ”§</div>
+        <div class="sidebar-brand">
+          <h3>RJvidros</h3>
+          <small>v1.0</small>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html">ðŸ“Š Dashboard</a>
+        <a href="clientes.html" class="active">ðŸ‘¥ Clientes</a>
+        <a href="ordens.html">ðŸ“‹ Ordens</a>
+        <a href="solicitacoes.html">ðŸš€ SolicitaÃ§Ãµes</a>
+        <a href="tecnicos.html">ðŸ”© TÃ©cnicos</a>
+        <a href="financeiro.html">ðŸ’° Financeiro</a>
+        <button id="sidebarLogout">ðŸšª Sair</button>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div>
+          <h1>GestÃ£o de Clientes</h1>
+          <p>Cadastro e histÃ³rico de atendimentos</p>
+        </div>
+        <div class="topbar-actions">
+          <button class="theme-toggle" id="themeToggle">ðŸŒ™</button>
+          <button id="logoutButton" class="button-secondary">Sair</button>
+        </div>
+      </header>
+
+      <main class="container">
+        <section class="split-panel">
+          <form id="clientForm" class="panel form-card">
+            <h2>Novo Cliente</h2>
+            <label>Nome<input type="text" id="clientName" required /></label>
+            <label>Telefone<input type="text" id="clientPhone" /></label>
+            <label>E-mail<input type="email" id="clientEmail" /></label>
+            <label>EndereÃ§o<input type="text" id="clientAddress" /></label>
+            <label>ObservaÃ§Ãµes<textarea id="clientNotes"></textarea></label>
+            <button type="submit" class="button-primary">Cadastrar cliente</button>
+            <p id="clientFeedback" class="success-message"></p>
+          </form>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Lista de Clientes</h2>
+              <button id="refreshClients" class="button-tertiary">ðŸ”„ Atualizar</button>
+            </div>
+            <div class="table-container">
+              <table>
+                <thead><tr><th>Nome</th><th>Telefone</th><th>E-mail</th><th>EndereÃ§o</th></tr></thead>
+                <tbody id="clientsTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="toast" style="display: none;"></div>
+
+  <!-- Scripts -->
+  <script src="js/ApiService.js"></script>
+  <script src="js/AuthManager.js"></script>
+  <script src="js/ToastManager.js"></script>
+  <script src="js/UIManager.js"></script>
+  <script src="js/clientes.js"></script>
+</body>
+</html>

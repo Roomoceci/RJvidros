@@ -1,0 +1,25 @@
+﻿{
+  "name": "rjvidros",
+  "version": "1.0.0",
+  "description": "RJvidros OS - Gestao inteligente de ordens de servico para vidracaria",
+  "main": "backend/server.js",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "start": "node backend/server.js",
+    "postinstall": "node scripts/rebuild-sqlite.js",
+    "prod": "NODE_ENV=production node backend/server.js",
+    "dev": "node --watch backend/server.js",
+    "reset-db": "node scripts/reset-db.js",
+    "set-admin": "node scripts/set-admin.js"
+  },
+  "author": "RJvidros",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nodemailer": "^9.0.0",
+    "sqlite3": "^6.0.1"
+  }
+}

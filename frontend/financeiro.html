@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financeiro | RJvidros OS</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="dashboard-page">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">MT</div>
+        <div class="sidebar-brand">
+          <h3>RJvidros</h3>
+          <small>v1.0</small>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html">ðŸ“Š Dashboard</a>
+        <a href="clientes.html">ðŸ‘¥ Clientes</a>
+        <a href="ordens.html">ðŸ“‹ Ordens</a>
+        <a href="solicitacoes.html">ðŸš€ SolicitaÃ§Ãµes</a>
+        <a href="tecnicos.html">ðŸ”© TÃ©cnicos</a>
+        <a href="financeiro.html" class="active">ðŸ’° Financeiro</a>
+        <button id="sidebarLogout">Sair</button>
+      </nav>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div>
+          <h1>Financeiro e Relatorios</h1>
+          <p id="userGreeting">Bem-vindo!</p>
+        </div>
+        <div class="topbar-actions">
+          <button class="theme-toggle" id="themeToggle">Tema</button>
+          <button id="printReport" class="button-secondary">Imprimir</button>
+          <button id="logoutButton" class="button-secondary">Sair</button>
+        </div>
+      </header>
+
+      <main class="container">
+        <section class="grid-cards">
+          <div class="card">
+            <div class="card-icon success">R$</div>
+            <span>Receita Hoje</span>
+            <strong id="dailyRevenue">R$ 0,00</strong>
+          </div>
+          <div class="card">
+            <div class="card-icon primary">MES</div>
+            <span>Receita Mensal</span>
+            <strong id="monthlyRevenue">R$ 0,00</strong>
+          </div>
+          <div class="card">
+            <div class="card-icon warning">OS</div>
+            <span>Ordens Pendentes</span>
+            <strong id="pendingOrders">0</strong>
+          </div>
+          <div class="card">
+            <div class="card-icon success">OK</div>
+            <span>Ticket Medio</span>
+            <strong id="averageTicket">R$ 0,00</strong>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Resumo Financeiro</h2>
+            <button id="refreshFinance" class="button-tertiary">Atualizar</button>
+          </div>
+          <div class="finance-summary">
+            <div>
+              <span>Total recebido</span>
+              <strong id="totalRevenue">R$ 0,00</strong>
+            </div>
+            <div>
+              <span>Valor pendente</span>
+              <strong id="pendingAmount">R$ 0,00</strong>
+            </div>
+            <div>
+              <span>Ordens pagas</span>
+              <strong id="paidOrders">0</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="report-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Por Status</h2>
+            </div>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Pagamento</th>
+                    <th>Ordens</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody id="financeStatusTable"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Faturamento Mensal</h2>
+            </div>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Mes</th>
+                    <th>Ordens</th>
+                    <th>Recebido</th>
+                    <th>Pendente</th>
+                  </tr>
+                </thead>
+                <tbody id="monthlyRevenueTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="report-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Clientes</h2>
+            </div>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Cliente</th>
+                    <th>Ordens</th>
+                    <th>Total</th>
+                    <th>Recebido</th>
+                  </tr>
+                </thead>
+                <tbody id="clientReportTable"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Tecnicos</h2>
+            </div>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Tecnico</th>
+                    <th>Ordens</th>
+                    <th>Concluidas</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody id="technicianReportTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" style="display: none;"></div>
+
+  <script src="js/ApiService.js"></script>
+  <script src="js/AuthManager.js"></script>
+  <script src="js/ToastManager.js"></script>
+  <script src="js/UIManager.js"></script>
+  <script src="js/financeiro.js"></script>
+</body>
+</html>

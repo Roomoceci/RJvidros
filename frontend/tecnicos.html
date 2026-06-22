@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TÃ©cnicos - RJvidros OS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>ðŸ”§ RJvidros v1.0</h2>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-link">ðŸ“Š Dashboard</a>
+      <a href="clientes.html" class="nav-link">ðŸ‘¥ Clientes</a>
+      <a href="ordens.html" class="nav-link">ðŸ“‹ Ordens</a>
+      <a href="tecnicos.html" class="nav-link active">ðŸ”© TÃ©cnicos</a>
+      <a href="financeiro.html" class="nav-link">ðŸ’° Financeiro</a>
+    </nav>
+    <button id="sidebarLogout" class="btn btn-danger" style="width: 100%; margin-top: 40px;">ðŸšª Logout</button>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-wrapper">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div>
+        <span id="userGreeting">Bem-vindo!</span>
+      </div>
+      <div style="display: flex; gap: 16px; align-items: center;">
+        <button id="themeToggle" class="btn btn-secondary">ðŸŒ™</button>
+        <button id="logoutButton" class="btn btn-danger">ðŸšª Logout</button>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="container">
+      <h1>Gerenciar TÃ©cnicos</h1>
+
+      <div class="split-panel">
+        <!-- Form -->
+        <section class="panel">
+          <h2>Novo TÃ©cnico</h2>
+          <form id="techForm">
+            <input type="text" id="techName" placeholder="Nome" required>
+            <input type="text" id="techPhone" placeholder="Telefone">
+            <input type="email" id="techEmail" placeholder="Email" required>
+            <input type="text" id="techSpecialty" placeholder="Especialidade (ex: box, portas, espelhos)">
+            <select id="techStatus">
+              <option value="Ativo">Ativo</option>
+              <option value="Inativo">Inativo</option>
+            </select>
+            <textarea id="techNotes" placeholder="ObservaÃ§Ãµes" rows="3"></textarea>
+            <button type="submit" class="btn btn-primary">âœ¨ Cadastrar TÃ©cnico</button>
+          </form>
+          <div id="techFeedback"></div>
+        </section>
+
+        <!-- Table -->
+        <section class="panel">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>Lista de TÃ©cnicos</h2>
+            <button id="refreshTecnicos" class="btn btn-secondary">ðŸ”„ Atualizar</button>
+          </div>
+          <div style="overflow-x: auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th>Telefone</th>
+                  <th>Email</th>
+                  <th>Especialidade</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="techTable">
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <!-- Toast Notification -->
+      <div id="toast" class="toast"></div>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/ApiService.js"></script>
+  <script src="js/AuthManager.js"></script>
+  <script src="js/ToastManager.js"></script>
+  <script src="js/UIManager.js"></script>
+  <script src="js/tecnicos.js"></script>
+</body>
+</html>

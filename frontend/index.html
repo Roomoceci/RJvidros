@@ -1,0 +1,626 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RJvidros OS - Home</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .home-page {
+      min-height: 100vh;
+      background: #f7faf8;
+      color: #14213d;
+    }
+
+    .home-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 18px 48px;
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid rgba(20, 33, 61, 0.08);
+      box-shadow: 0 10px 30px rgba(20, 33, 61, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+    }
+
+    .home-nav-logo {
+      color: #14213d;
+      font-size: 1.35rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    .home-nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .home-nav-links a {
+      color: #3f4f64;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .home-nav-links a:hover {
+      color: #0f766e;
+    }
+
+    .home-nav-links button {
+      padding: 10px 18px;
+      background: #14213d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .home-nav-links button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(20, 33, 61, 0.18);
+    }
+
+    #homeThemeToggle {
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      background: #e8eef3;
+      color: #14213d;
+    }
+
+    .home-hero {
+      width: min(1180px, calc(100% - 48px));
+      min-height: calc(100vh - 84px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(320px, 0.95fr) minmax(420px, 1.05fr);
+      align-items: center;
+      gap: 48px;
+      padding: 48px 0;
+    }
+
+    .home-hero-content {
+      text-align: left;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(15, 118, 110, 0.1);
+      color: #0f766e;
+      font-size: 0.9rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .home-hero-content h1 {
+      font-size: clamp(2.35rem, 6vw, 4.8rem);
+      line-height: 0.95;
+      margin: 0 0 22px;
+      letter-spacing: 0;
+      color: #14213d;
+    }
+
+    .home-hero-content p {
+      font-size: 1.22rem;
+      line-height: 1.65;
+      margin: 0 0 28px;
+      color: #435269;
+      max-width: 620px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 28px 0;
+      max-width: 560px;
+    }
+
+    .hero-stat {
+      border-left: 3px solid #0f766e;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.68);
+      border-radius: 8px;
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 1.45rem;
+      color: #14213d;
+    }
+
+    .hero-stat span {
+      display: block;
+      color: #5f6f83;
+      font-size: 0.9rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .cta-btn {
+      min-height: 48px;
+      padding: 14px 22px;
+      font-size: 1rem;
+      font-weight: 800;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .cta-btn-primary {
+      background: #0f766e;
+      color: white;
+      box-shadow: 0 12px 28px rgba(15, 118, 110, 0.22);
+    }
+
+    .cta-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(15, 118, 110, 0.3);
+    }
+
+    .cta-btn-secondary {
+      background: white;
+      color: #14213d;
+      border: 1px solid rgba(20, 33, 61, 0.12);
+    }
+
+    .cta-btn-secondary:hover {
+      background: #f1f5f9;
+      transform: translateY(-2px);
+    }
+
+    .cta-btn-whatsapp {
+      background: #16a34a;
+      color: white;
+      box-shadow: 0 12px 28px rgba(22, 163, 74, 0.22);
+    }
+
+    .cta-btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(22, 163, 74, 0.3);
+    }
+
+    .hero-photos {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-rows: 260px 210px;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .photo-tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 20px 45px rgba(20, 33, 61, 0.16);
+      background: #dce5ea;
+    }
+
+    .photo-tile img,
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-tile.large {
+      grid-row: 1 / span 2;
+    }
+
+    .photo-caption {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      padding: 12px 14px;
+      background: rgba(20, 33, 61, 0.82);
+      color: white;
+      border-radius: 8px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 34px 0 74px;
+    }
+
+    .feature-card {
+      background: white;
+      border: 1px solid rgba(20, 33, 61, 0.08);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 10px 28px rgba(20, 33, 61, 0.06);
+    }
+
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: rgba(15, 118, 110, 0.1);
+      color: #0f766e;
+      font-size: 1.35rem;
+      margin-bottom: 16px;
+    }
+
+    .feature-card h3 {
+      color: #14213d;
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+    }
+
+    .feature-card p {
+      color: #5f6f83;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .gallery-section {
+      background: #ffffff;
+      padding: 74px 24px 90px;
+    }
+
+    .gallery-header {
+      width: min(1180px, 100%);
+      margin: 0 auto 28px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .gallery-header h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: #14213d;
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    .gallery-header p {
+      color: #5f6f83;
+      margin: 8px 0 0;
+      max-width: 540px;
+      line-height: 1.6;
+    }
+
+    .gallery-grid {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 220px;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #dce5ea;
+    }
+
+    .gallery-item.wide {
+      grid-column: span 2;
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #14213d;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    body.dark-mode .home-page {
+      background: #0f172a;
+      color: #f1f5f9;
+    }
+
+    body.dark-mode .home-nav,
+    body.dark-mode .feature-card,
+    body.dark-mode .gallery-section {
+      background: #1e293b;
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    body.dark-mode .home-nav-logo,
+    body.dark-mode .home-hero-content h1,
+    body.dark-mode .hero-stat strong,
+    body.dark-mode .feature-card h3,
+    body.dark-mode .gallery-header h2 {
+      color: #f8fafc;
+    }
+
+    body.dark-mode .home-nav-links a,
+    body.dark-mode .home-hero-content p,
+    body.dark-mode .hero-stat span,
+    body.dark-mode .feature-card p,
+    body.dark-mode .gallery-header p {
+      color: #cbd5e1;
+    }
+
+    body.dark-mode .hero-stat,
+    body.dark-mode .cta-btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: #f8fafc;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 980px) {
+      .home-nav {
+        padding: 16px 24px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .home-nav-links {
+        justify-content: flex-start;
+      }
+
+      .home-hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 44px 0;
+      }
+
+      .hero-photos {
+        grid-template-rows: 240px 180px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .home-nav-links {
+        width: 100%;
+        gap: 12px;
+      }
+
+      .home-nav-links a,
+      .home-nav-links button:not(#homeThemeToggle) {
+        width: 100%;
+      }
+
+      .home-hero,
+      .features {
+        width: min(100% - 32px, 1180px);
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-btn {
+        width: 100%;
+      }
+
+      .hero-photos,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+
+      .photo-tile,
+      .gallery-item {
+        min-height: 220px;
+      }
+
+      .photo-tile.large,
+      .gallery-item.wide {
+        grid-row: auto;
+        grid-column: auto;
+      }
+
+      .gallery-header {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="home-page">
+    <nav class="home-nav">
+      <div class="home-nav-logo">
+        ðŸ”§ RJvidros OS
+      </div>
+      <div class="home-nav-links">
+        <a href="#features">Recursos</a>
+        <a href="#galeria">ServiÃ§os</a>
+        <a href="solicitar-servico.html">Solicitar ServiÃ§o</a>
+        <a href="#" data-whatsapp-link>WhatsApp</a>
+        <a href="login.html">
+          <button>Painel Administrativo</button>
+        </a>
+        <button id="homeThemeToggle" aria-label="Alternar tema">ðŸŒ™</button>
+      </div>
+    </nav>
+
+    <section class="home-hero">
+      <div class="home-hero-content">
+        <span class="eyebrow">Vidros sob medida para obras, lojas e residencias</span>
+        <h1>RJvidros OS</h1>
+        <p>Atendimento para box, portas de vidro, guarda-corpo, espelhos, fechamentos e manutencao de ferragens com registro de OS e contato rapido pelo WhatsApp.</p>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong>Box</strong>
+            <span>banheiro sob medida</span>
+          </div>
+          <div class="hero-stat">
+            <strong>Vidros</strong>
+            <span>residencial e comercial</span>
+          </div>
+          <div class="hero-stat">
+            <strong>WhatsApp</strong>
+            <span>retorno rapido</span>
+          </div>
+        </div>
+
+        <div class="cta-buttons">
+          <a href="solicitar-servico.html" class="cta-btn cta-btn-primary">Solicitar ServiÃ§o</a>
+          <a href="#" class="cta-btn cta-btn-whatsapp" data-whatsapp-link>Falar no WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="hero-photos" aria-label="Fotos de serviÃ§os tÃ©cnicos">
+        <figure class="photo-tile large">
+          <img src="assets/home/hero-vidros.png" alt="Tecnico ajustando porta de vidro comercial">
+          <figcaption class="photo-caption">Portas e fachadas de vidro</figcaption>
+        </figure>
+        <figure class="photo-tile">
+          <img src="assets/home/box-banheiro.png" alt="Box de banheiro em vidro temperado">
+          <figcaption class="photo-caption">Box sob medida</figcaption>
+        </figure>
+        <figure class="photo-tile">
+          <img src="assets/home/guarda-corpo.png" alt="Guarda-corpo de vidro em sacada">
+          <figcaption class="photo-caption">Guarda-corpo e sacadas</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="feature-card">
+        <div class="feature-icon">ðŸ“‹</div>
+        <h3>SolicitaÃ§Ã£o RÃ¡pida</h3>
+        <p>Cliente envia o pedido pelo formulÃ¡rio e a equipe acompanha tudo pelo painel.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">ðŸ”§</div>
+        <h3>TÃ©cnicos Qualificados</h3>
+        <p>Cadastro de tÃ©cnicos, status operacional e especialidades organizadas.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">âš¡</div>
+        <h3>Atendimento Ãgil</h3>
+        <p>Controle das ordens abertas, concluÃ­das e pendÃªncias do dia.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">ðŸ’°</div>
+        <h3>Financeiro</h3>
+        <p>Acompanhe valores pagos, pendentes e faturamento de serviÃ§os.</p>
+      </div>
+    </section>
+  </div>
+
+  <section class="gallery-section" id="galeria">
+    <div class="gallery-header">
+      <div>
+        <h2>ServiÃ§os em destaque</h2>
+        <p>Fotos do segmento de vidracaria: vidro temperado, ferragens, box, guarda-corpo, portas e acabamento limpo para cada ambiente.</p>
+      </div>
+      <a href="solicitar-servico.html" class="cta-btn cta-btn-primary">Pedir OrÃ§amento</a>
+      <a href="#" class="cta-btn cta-btn-whatsapp" data-whatsapp-link>WhatsApp</a>
+    </div>
+
+    <div class="gallery-grid">
+      <figure class="gallery-item wide">
+        <img src="assets/home/hero-vidros.png" alt="Tecnico ajustando porta de vidro" loading="lazy">
+        <figcaption class="gallery-label">Porta de vidro</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="assets/home/mola-piso-vidro.png" alt="Ferragem e mola de piso em porta de vidro" loading="lazy">
+        <figcaption class="gallery-label">Ferragens</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="assets/home/box-banheiro.png" alt="Box de banheiro em vidro temperado" loading="lazy">
+        <figcaption class="gallery-label">Box temperado</figcaption>
+      </figure>
+      <figure class="gallery-item wide">
+        <img src="assets/home/guarda-corpo.png" alt="Guarda-corpo de vidro em sacada" loading="lazy">
+        <figcaption class="gallery-label">Guarda-corpo</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <script>
+    function sanitizePhone(phone) {
+      return String(phone || '').replace(/\D/g, '');
+    }
+
+    function buildWhatsAppUrl(config) {
+      const number = sanitizePhone(config.whatsappCentralNumber || '5511999999999');
+      const message = [
+        'OlÃ¡, gostaria de solicitar atendimento da RJvidros.',
+        'Preciso de atendimento para vidros, box, porta, guarda-corpo ou espelho.'
+      ].join('\n');
+
+      return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+    }
+
+    async function setupWhatsAppLinks() {
+      try {
+        const response = await fetch('/api/config/public');
+        const config = response.ok ? await response.json() : {};
+        const url = buildWhatsAppUrl(config);
+        document.querySelectorAll('[data-whatsapp-link]').forEach(link => {
+          link.href = url;
+          link.target = '_blank';
+          link.rel = 'noopener';
+        });
+      } catch (error) {
+        const url = buildWhatsAppUrl({});
+        document.querySelectorAll('[data-whatsapp-link]').forEach(link => {
+          link.href = url;
+          link.target = '_blank';
+          link.rel = 'noopener';
+        });
+      }
+    }
+
+    if (localStorage.getItem('dark-mode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
+
+    document.getElementById('homeThemeToggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
+    });
+
+    setupWhatsAppLinks();
+  </script>
+</body>
+</html>

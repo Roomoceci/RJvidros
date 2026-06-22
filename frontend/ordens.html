@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ordens | RJvidros OS</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="dashboard-page">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">ðŸ”§</div>
+        <div class="sidebar-brand">
+          <h3>RJvidros</h3>
+          <small>v1.0</small>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html">ðŸ“Š Dashboard</a>
+        <a href="clientes.html">ðŸ‘¥ Clientes</a>
+        <a href="ordens.html" class="active">ðŸ“‹ Ordens</a>
+        <a href="solicitacoes.html">ðŸš€ SolicitaÃ§Ãµes</a>
+        <a href="tecnicos.html">ðŸ”© TÃ©cnicos</a>
+        <a href="financeiro.html">ðŸ’° Financeiro</a>
+        <button id="sidebarLogout">ðŸšª Sair</button>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div>
+          <h1>Ordens de ServiÃ§o</h1>
+          <p>Cadastro e acompanhamento de serviÃ§os</p>
+        </div>
+        <div class="topbar-actions">
+          <button class="theme-toggle" id="themeToggle">ðŸŒ™</button>
+          <button id="printButton" class="button-secondary" title="Imprimir Ordens">ðŸ–¨ï¸ Imprimir</button>
+          <select id="printStatusFilter" class="report-status-select" title="Status para impressao">
+            <option value="todos">Todos os status</option>
+            <option value="Aberta">Abertas</option>
+            <option value="Concluida">Concluidas</option>
+            <option value="pago">Pagas</option>
+            <option value="pendente">Pagamento pendente</option>
+          </select>
+          <button id="logoutButton" class="button-secondary">Sair</button>
+        </div>
+      </header>
+
+      <main class="container">
+        <section class="split-panel">
+          <form id="orderForm" class="panel form-card">
+            <h2>Nova Ordem</h2>
+            <label>Cliente<select id="orderClient" required></select></label>
+            <label>TÃ©cnico<select id="orderTechnician"></select></label>
+            <label>TÃ­tulo<input type="text" id="orderTitle" required /></label>
+            <label>DescriÃ§Ã£o<textarea id="orderDescription"></textarea></label>
+            <label>Valor<input type="number" step="0.01" id="orderTotal" /></label>
+            <label class="checkbox-field"><input type="checkbox" id="orderPaid" /> Pago</label>
+            <button type="submit" class="button-primary">Salvar ordem</button>
+            <p id="orderFeedback" class="success-message"></p>
+          </form>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Ordens Registradas</h2>
+              <button id="refreshOrders" class="button-tertiary">ðŸ”„ Atualizar</button>
+            </div>
+            <div class="table-container">
+              <table>
+                <thead><tr><th>#</th><th>Cliente</th><th>TÃ©cnico</th><th>Status</th><th>Valor</th><th>NFe</th><th>AÃ§Ãµes</th></tr></thead>
+                <tbody id="ordersTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="toast" style="display: none;"></div>
+
+  <!-- Scripts -->
+  <script src="js/ApiService.js"></script>
+  <script src="js/AuthManager.js"></script>
+  <script src="js/ToastManager.js"></script>
+  <script src="js/UIManager.js"></script>
+  <script src="js/ordens.js"></script>
+</body>
+</html>
