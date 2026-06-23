@@ -542,6 +542,7 @@ tr:hover { background: var(--bg-light); }
   animation: fadeIn 0.2s ease;
 }
 
+.modal[style*="display: flex"] { display: flex !important; }
 .modal.active { display: flex; }
 
 .modal-content {
@@ -553,6 +554,20 @@ tr:hover { background: var(--bg-light); }
   box-shadow: var(--shadow-xl);
   animation: slideUp 0.3s ease;
   position: relative;
+}
+
+.request-modal {
+  padding: 20px;
+}
+
+.request-modal-content {
+  width: min(920px, 96vw);
+  max-width: 920px;
+  max-height: min(760px, calc(100vh - 40px));
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .modal-close {
@@ -572,7 +587,74 @@ tr:hover { background: var(--bg-light); }
   border-bottom: 1px solid var(--border);
 }
 
+.request-modal .modal-header {
+  margin: 0;
+  padding: 18px 56px 14px 22px;
+  flex: 0 0 auto;
+}
+
+.request-modal .modal-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
 .modal-header h3 { margin: 0; font-size: 1.25rem; }
+
+.request-modal .modal-body {
+  padding: 18px 22px;
+  overflow-y: auto;
+  flex: 1 1 auto;
+}
+
+.request-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.request-detail-item {
+  min-width: 0;
+}
+
+.request-detail-item strong {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin-bottom: 4px;
+}
+
+.request-detail-item p {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.request-detail-full {
+  margin-bottom: 14px;
+}
+
+.request-modal .modal-footer {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) auto auto auto;
+  gap: 10px;
+  align-items: center;
+  padding: 14px 22px 18px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  flex: 0 0 auto;
+}
+
+.request-modal .modal-footer select,
+.request-modal .modal-footer button {
+  min-height: 40px;
+}
+
+.request-modal .conversion-panel {
+  margin-top: 10px;
+}
 
 .conversion-panel {
   border: 1px solid var(--border);
@@ -609,6 +691,23 @@ tr:hover { background: var(--bg-light); }
 
 @media (max-width: 700px) {
   .conversion-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .request-modal {
+    padding: 10px;
+  }
+
+  .request-modal-content {
+    width: calc(100vw - 20px);
+    max-height: calc(100vh - 20px);
+  }
+
+  .request-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .request-modal .modal-footer {
     grid-template-columns: 1fr;
   }
 }

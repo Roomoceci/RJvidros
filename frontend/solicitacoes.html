@@ -109,56 +109,56 @@
   </div>
 
   <!-- MODAL - Detalhes da Solicitação -->
-  <div id="requestModal" class="modal" style="display: none;">
-    <div class="modal-content">
+  <div id="requestModal" class="modal request-modal" aria-hidden="true">
+    <div class="modal-content request-modal-content">
       <div class="modal-header">
         <h2>Detalhes da Solicitação</h2>
-        <button class="btn-close" onclick="closeRequestModal()">&times;</button>
+        <button class="modal-close" onclick="closeRequestModal()" aria-label="Fechar">&times;</button>
       </div>
       <div class="modal-body">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-          <div>
+        <div class="request-detail-grid">
+          <div class="request-detail-item">
             <strong>Nome do Cliente</strong>
             <p id="modalClientName"></p>
           </div>
-          <div>
+          <div class="request-detail-item">
             <strong>Telefone</strong>
             <p id="modalClientPhone"></p>
           </div>
-          <div>
-            <strong>Email</strong>
+          <div class="request-detail-item">
+            <strong>E-mail</strong>
             <p id="modalClientEmail"></p>
           </div>
-          <div>
+          <div class="request-detail-item">
             <strong>Tipo de Serviço</strong>
             <p id="modalServiceType"></p>
           </div>
-          <div>
+          <div class="request-detail-item">
             <strong>Data Preferida</strong>
             <p id="modalPreferredDate"></p>
           </div>
-          <div>
+          <div class="request-detail-item">
             <strong>Data da Solicitação</strong>
             <p id="modalCreatedAt"></p>
           </div>
         </div>
 
-        <div style="margin-bottom: 20px;">
+        <div class="request-detail-item request-detail-full">
           <strong>Endereço</strong>
           <p id="modalAddress"></p>
         </div>
 
-        <div style="margin-bottom: 20px;">
+        <div class="request-detail-item request-detail-full">
           <strong>Descrição do Problema</strong>
           <p id="modalDescription"></p>
         </div>
 
-        <div style="margin-bottom: 20px;">
+        <div class="request-detail-item request-detail-full">
           <strong>Observações</strong>
           <p id="modalNotes"></p>
         </div>
 
-        <div style="margin-bottom: 20px;">
+        <div class="request-detail-item request-detail-full">
           <strong>Status Atual</strong>
           <p id="modalStatus"></p>
         </div>
@@ -180,7 +180,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <select id="statusSelect" style="padding: 10px 15px; border: 2px solid #e0e0e0; border-radius: 8px;">
+        <select id="statusSelect">
           <option value="Pendente">Pendente</option>
           <option value="Aprovada">Aprovada</option>
           <option value="Agendada">Agendada</option>

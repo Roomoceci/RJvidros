@@ -128,14 +128,16 @@ async function openRequestModal(requestId) {
     document.getElementById('modalNotes').textContent = request.notes || 'Nenhuma observação';
     document.getElementById('modalStatus').textContent = request.status;
 
-    requestModal.style.display = 'flex';
+    requestModal.classList.add('active');
+    requestModal.setAttribute('aria-hidden', 'false');
   } catch (error) {
     toastManager.error('Erro ao carregar detalhes');
   }
 }
 
 function closeRequestModal() {
-  requestModal.style.display = 'none';
+  requestModal.classList.remove('active');
+  requestModal.setAttribute('aria-hidden', 'true');
   currentRequestId = null;
 }
 
