@@ -63,6 +63,8 @@ class DatabaseManager {
         completed_at DATETIME,
         nfe_email_sent_at DATETIME,
         nfe_email_status TEXT,
+        nfe_access_key TEXT,
+        nfe_url TEXT,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY(client_id) REFERENCES clients(id),
         FOREIGN KEY(technician_id) REFERENCES technicians(id)
@@ -94,7 +96,9 @@ class DatabaseManager {
       const migrations = [
         ['completed_at', 'ALTER TABLE orders ADD COLUMN completed_at DATETIME'],
         ['nfe_email_sent_at', 'ALTER TABLE orders ADD COLUMN nfe_email_sent_at DATETIME'],
-        ['nfe_email_status', 'ALTER TABLE orders ADD COLUMN nfe_email_status TEXT']
+        ['nfe_email_status', 'ALTER TABLE orders ADD COLUMN nfe_email_status TEXT'],
+        ['nfe_access_key', 'ALTER TABLE orders ADD COLUMN nfe_access_key TEXT'],
+        ['nfe_url', 'ALTER TABLE orders ADD COLUMN nfe_url TEXT']
       ];
 
       migrations.forEach(([columnName, sql]) => {
@@ -210,6 +214,14 @@ class DatabaseManager {
     await this.run(`UPDATE orders
       SET status = ?, paid = 1, completed_at = ?, nfe_email_status = ?
       WHERE id = ?`, ['Concluída', completedAt, emailStatus, id]);
+    return this.getOrderById(id);
+  }
+
+  async saveOrderNfeData(id, nfeData = {}) {
+    await this.run(
+      'UPDATE orders SET nfe_access_key = ?, nfe_url = ? WHERE id = ?',
+      [nfeData.nfe_access_key || null, nfeData.nfe_url || null, id]
+    );
     return this.getOrderById(id);
   }
 

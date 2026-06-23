@@ -109,6 +109,10 @@
     return this.put(`/ordens/${id}/finalizar-pago`, {});
   }
 
+  async sendOrderNfe(id, data) {
+    return this.post(`/ordens/${id}/enviar-nfe`, data);
+  }
+
   async getDashboard() {
     return this.get('/dashboard');
   }

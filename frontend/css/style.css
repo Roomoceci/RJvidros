@@ -242,8 +242,15 @@ textarea { min-height: 100px; resize: vertical; }
   border-color: rgba(37, 99, 235, 0.25);
 }
 
+.button-nfe {
+  background: rgba(15, 118, 110, 0.1);
+  color: var(--primary-dark);
+  border-color: rgba(15, 118, 110, 0.24);
+}
+
 .success-message { color: var(--success); font-weight: 500; margin: 12px 0 0; }
 .error-message { color: var(--danger); font-weight: 500; margin: 12px 0 0; }
+.field-hint { color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 4px 0 16px; }
 
 /* DASHBOARD PAGE */
 .dashboard-page {

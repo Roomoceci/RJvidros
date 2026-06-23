@@ -21,7 +21,10 @@ class EmailService {
     });
   }
 
-  buildNfeText(order) {
+  buildNfeText(order, nfeData = {}) {
+    const accessKey = nfeData.nfe_access_key || order.nfe_access_key || '-';
+    const nfeUrl = nfeData.nfe_url || order.nfe_url || '-';
+
     return [
       `NFe / comprovante da Ordem de Serviço #${order.id}`,
       '',
@@ -30,16 +33,18 @@ class EmailService {
       `Descrição: ${order.description || '-'}`,
       `Técnico: ${order.technician || 'A definir'}`,
       `Valor: R$ ${Number(order.total || 0).toFixed(2)}`,
-      `Status: ${order.status}`,
+      `Status: ${order.status || '-'}`,
       `Pagamento: ${order.paid ? 'Pago' : 'Pendente'}`,
       `Finalizada em: ${order.completed_at || new Date().toISOString()}`,
+      `Chave/Número da NFe: ${accessKey}`,
+      `Link da NFe: ${nfeUrl}`,
       '',
       'Obrigado pela preferência.',
       'RJvidros OS'
     ].join('\n');
   }
 
-  async sendOrderNfe(order) {
+  async sendOrderNfe(order, nfeData = {}) {
     if (!this.isConfigured()) {
       return { sent: false, reason: 'SMTP não configurado' };
     }
@@ -49,7 +54,7 @@ class EmailService {
     }
 
     const from = this.config.SMTP_FROM || this.config.SMTP_USER;
-    const text = this.buildNfeText(order);
+    const text = this.buildNfeText(order, nfeData);
 
     await this.createTransporter().sendMail({
       from,

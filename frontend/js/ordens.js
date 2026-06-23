@@ -12,9 +12,15 @@ const orderClient = document.getElementById('orderClient');
 const orderTechnician = document.getElementById('orderTechnician');
 const orderFeedback = document.getElementById('orderFeedback');
 const printStatusFilter = document.getElementById('printStatusFilter');
+const nfeModal = document.getElementById('nfeModal');
+const nfeForm = document.getElementById('nfeForm');
+const nfeAccessKey = document.getElementById('nfeAccessKey');
+const nfeUrl = document.getElementById('nfeUrl');
+const nfeOrderSummary = document.getElementById('nfeOrderSummary');
 const currencyFormatter = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 
 let latestOrders = [];
+let selectedNfeOrderId = null;
 let publicConfig = {
   whatsappCentralNumber: '5511999999999',
   whatsappCentralName: 'Central RJvidros'
@@ -91,6 +97,13 @@ function nfeStatusText(order) {
   return order.nfe_email_status || 'Pendente';
 }
 
+function nfeStatusDetail(order) {
+  const parts = [nfeStatusText(order)];
+  if (order.nfe_access_key) parts.push(`Chave: ${order.nfe_access_key}`);
+  if (order.nfe_url) parts.push('Link salvo');
+  return parts.join(' | ');
+}
+
 async function loadOrders() {
   try {
     const orders = await apiService.getOrders();
@@ -102,11 +115,12 @@ async function loadOrders() {
         <td>${escapeHtml(order.technician || '-')}</td>
         <td><span class="status-badge status-${statusClass(order.status)}">${escapeHtml(order.status)}</span></td>
         <td>${currencyFormatter.format(order.total || 0)}</td>
-        <td>${escapeHtml(nfeStatusText(order))}</td>
+        <td>${escapeHtml(nfeStatusDetail(order))}</td>
         <td>
           <div class="table-actions">
             <a class="button-mini button-whatsapp" href="${buildCentralWhatsAppUrl(order)}" target="_blank" rel="noopener">Central</a>
             ${clientWhatsAppAction(order)}
+            <button class="button-mini button-nfe" onclick="openNfeModal(${order.id})">Enviar NFe</button>
             <button class="button-mini button-paid" onclick="finalizeOrderAsPaid(${order.id})" ${order.paid && normalizeStatus(order.status) === 'concluida' ? 'disabled' : ''}>Finalizar/Pago</button>
           </div>
         </td>
@@ -140,6 +154,53 @@ async function finalizeOrderAsPaid(orderId) {
 }
 
 window.finalizeOrderAsPaid = finalizeOrderAsPaid;
+
+function openNfeModal(orderId) {
+  const order = latestOrders.find(item => Number(item.id) === Number(orderId));
+  if (!order) {
+    toastManager.error('OS não encontrada para envio da NFe');
+    return;
+  }
+
+  selectedNfeOrderId = order.id;
+  nfeAccessKey.value = order.nfe_access_key || '';
+  nfeUrl.value = order.nfe_url || '';
+  nfeOrderSummary.textContent = `OS #${order.id} - ${order.client || 'Cliente'} - ${order.client_email || 'sem e-mail cadastrado'}`;
+  nfeModal.classList.add('active');
+  nfeModal.setAttribute('aria-hidden', 'false');
+  nfeAccessKey.focus();
+}
+
+function closeNfeModal() {
+  selectedNfeOrderId = null;
+  nfeForm.reset();
+  nfeModal.classList.remove('active');
+  nfeModal.setAttribute('aria-hidden', 'true');
+}
+
+async function submitNfe(event) {
+  event.preventDefault();
+  const payload = {
+    nfe_access_key: nfeAccessKey.value.trim(),
+    nfe_url: nfeUrl.value.trim()
+  };
+
+  if (!payload.nfe_access_key && !payload.nfe_url) {
+    toastManager.error('Informe a chave, número ou link da NFe');
+    return;
+  }
+
+  try {
+    const order = await apiService.sendOrderNfe(selectedNfeOrderId, payload);
+    toastManager.success(`NFe: ${order.nfe_email_status || 'processada'}`);
+    closeNfeModal();
+    await loadOrders();
+  } catch (error) {
+    toastManager.error(error.message);
+  }
+}
+
+window.openNfeModal = openNfeModal;
 
 async function loadClients() {
   try {
@@ -315,6 +376,11 @@ document.getElementById('refreshOrders').addEventListener('click', async () => {
 });
 
 document.getElementById('printButton').addEventListener('click', printOrdersReport);
+document.getElementById('closeNfeModal').addEventListener('click', closeNfeModal);
+nfeForm.addEventListener('submit', submitNfe);
+nfeModal.addEventListener('click', (event) => {
+  if (event.target === nfeModal) closeNfeModal();
+});
 
 loadPublicConfig().then(loadOrders);
 loadClients();

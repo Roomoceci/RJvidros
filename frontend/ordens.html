@@ -82,6 +82,29 @@
     </div>
   </div>
 
+  <div class="modal" id="nfeModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="closeNfeModal" type="button" aria-label="Fechar">&times;</button>
+      <div class="modal-header">
+        <h3>Enviar NFe ao Cliente</h3>
+        <p id="nfeOrderSummary"></p>
+      </div>
+
+      <form id="nfeForm" class="nfe-form">
+        <label>
+          Chave ou número da NFe
+          <input type="text" id="nfeAccessKey" maxlength="80" placeholder="Ex: 3526... ou NF-000123" />
+        </label>
+        <label>
+          Link da NFe, PDF ou XML
+          <input type="url" id="nfeUrl" maxlength="500" placeholder="https://..." />
+        </label>
+        <p class="field-hint">Informe pelo menos a chave/número ou um link. O envio usa o e-mail cadastrado no cliente.</p>
+        <button type="submit" class="button-primary">Enviar NFe</button>
+      </form>
+    </div>
+  </div>
+
   <!-- TOAST NOTIFICATION -->
   <div id="toast" class="toast" style="display: none;"></div>
 

@@ -167,6 +167,7 @@ app.get('/api/ordens/concluidas', (req, res) => orderController.getClosed(req, r
 app.get('/api/ordens/:id', (req, res) => orderController.getById(req, res));
 app.post('/api/ordens', (req, res) => orderController.create(req, res));
 app.put('/api/ordens/:id/finalizar-pago', (req, res) => orderController.finalizeAsPaid(req, res));
+app.post('/api/ordens/:id/enviar-nfe', (req, res) => orderController.sendNfe(req, res));
 
 // Routes - Service Requests (Public)
 app.get('/api/solicitacoes', (req, res) => serviceRequestController.getAll(req, res));

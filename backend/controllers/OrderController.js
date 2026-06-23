@@ -56,6 +56,15 @@
       res.status(400).json({ error: error.message });
     }
   }
+
+  async sendNfe(req, res) {
+    try {
+      const order = await this.orderService.sendNfe(req.params.id, req.body);
+      res.json(order);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  }
 }
 
 module.exports = OrderController;
