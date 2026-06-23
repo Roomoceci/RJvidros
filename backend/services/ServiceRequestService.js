@@ -40,7 +40,9 @@ class ServiceRequestService {
       ]
     );
 
-    return { id, ...cleanData };
+    const clientId = await this.syncClientFromRequest(id, cleanData);
+
+    return { id, client_id: clientId, ...cleanData };
   }
 
   async updateRequestStatus(id, status) {
@@ -190,6 +192,48 @@ class ServiceRequestService {
       preferredDate: data.preferredDate || data.preferred_date || null,
       notes: cleanText(data.notes, 800)
     };
+  }
+
+  async syncClientFromRequest(requestId, data) {
+    const email = data.clientEmail;
+    const phoneDigits = String(data.clientPhone || '').replace(/\D/g, '');
+    let client = await this.db.getClientByEmail(email);
+
+    if (!client && phoneDigits) {
+      client = await this.db.queryGet(
+        "SELECT * FROM clients WHERE REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(IFNULL(phone, ''), ' ', ''), '-', ''), '(', ''), ')', ''), '+', '') = ?",
+        [phoneDigits]
+      );
+    }
+
+    const notesLine = `Solicitação recebida automaticamente #${requestId}`;
+
+    if (!client) {
+      return this.db.createClient({
+        name: data.clientName,
+        phone: data.clientPhone,
+        email,
+        address: data.address,
+        notes: notesLine
+      });
+    }
+
+    const notes = String(client.notes || '').includes(notesLine)
+      ? client.notes
+      : [client.notes, notesLine].filter(Boolean).join('\n');
+
+    await this.db.run(
+      `UPDATE clients
+        SET name = COALESCE(NULLIF(name, ''), ?),
+            phone = COALESCE(NULLIF(phone, ''), ?),
+            email = COALESCE(NULLIF(email, ''), ?),
+            address = COALESCE(NULLIF(address, ''), ?),
+            notes = ?
+        WHERE id = ?`,
+      [data.clientName, data.clientPhone, email, data.address, notes, client.id]
+    );
+
+    return client.id;
   }
 
   isValidEmail(email) {
