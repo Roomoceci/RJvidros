@@ -272,8 +272,8 @@ textarea { min-height: 100px; resize: vertical; }
 }
 
 .sidebar-logo {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   background: #f8fafc;
   border-radius: 12px;
   display: flex;
@@ -285,7 +285,7 @@ textarea { min-height: 100px; resize: vertical; }
 }
 
 .sidebar-logo img {
-  width: 44px;
+  width: 48px;
   height: auto;
   display: block;
 }
